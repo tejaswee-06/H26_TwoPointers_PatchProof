@@ -1,0 +1,593 @@
+{
+  "schema_version": "2.0",
+  "report_type": "usage",
+  "root": "LinkWatch",
+  "scan_status": "completed",
+  "python_files_scanned": 16,
+  "python_files_with_imports": 15,
+  "summary": {
+    "declared_packages": 14,
+    "by_status": {
+      "import_observed": 9,
+      "mapping_unavailable": 5
+    },
+    "parse_error_count": 0,
+    "analysis_complete": true
+  },
+  "packages": [
+    {
+      "package": "appdirs",
+      "declarations": [
+        {
+          "file": "pyproject.toml",
+          "line": 14,
+          "constraint": "==1.4.4",
+          "section": "project.dependencies"
+        },
+        {
+          "file": "requirements.txt",
+          "line": 2,
+          "constraint": "==1.4.4",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "appdirs"
+      ],
+      "mapping_source": "name_heuristic",
+      "imports_found": [
+        {
+          "file": "linkwatch/cache.py",
+          "line": 4,
+          "module": "appdirs",
+          "import_name": "appdirs",
+          "alias": null,
+          "kind": "from_import",
+          "statement": "from appdirs import user_cache_dir"
+        }
+      ],
+      "usage_status": "import_observed",
+      "interpretation": "Import(s) matching the candidate import root(s) were observed in source. The import root is a guess from the distribution name because no installed metadata was found."
+    },
+    {
+      "package": "chardet",
+      "declarations": [
+        {
+          "file": "pyproject.toml",
+          "line": 20,
+          "constraint": "==5.2.0",
+          "section": "project.dependencies"
+        },
+        {
+          "file": "requirements.txt",
+          "line": 8,
+          "constraint": "==5.2.0",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "chardet"
+      ],
+      "mapping_source": "name_heuristic",
+      "imports_found": [
+        {
+          "file": "linkwatch/encoding.py",
+          "line": 4,
+          "module": "chardet",
+          "import_name": "chardet",
+          "alias": null,
+          "kind": "import",
+          "statement": "import chardet"
+        }
+      ],
+      "usage_status": "import_observed",
+      "interpretation": "Import(s) matching the candidate import root(s) were observed in source. The import root is a guess from the distribution name because no installed metadata was found."
+    },
+    {
+      "package": "click",
+      "declarations": [
+        {
+          "file": "pyproject.toml",
+          "line": 18,
+          "constraint": ">=7",
+          "section": "project.dependencies"
+        },
+        {
+          "file": "requirements.txt",
+          "line": 6,
+          "constraint": ">=7",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "click"
+      ],
+      "mapping_source": "name_heuristic",
+      "imports_found": [
+        {
+          "file": "linkwatch/cli.py",
+          "line": 1,
+          "module": "click",
+          "import_name": "click",
+          "alias": null,
+          "kind": "import",
+          "statement": "import click"
+        },
+        {
+          "file": "tests/test_report.py",
+          "line": 1,
+          "module": "click",
+          "import_name": "click.testing",
+          "alias": null,
+          "kind": "from_import",
+          "statement": "from click.testing import CliRunner"
+        }
+      ],
+      "usage_status": "import_observed",
+      "interpretation": "Import(s) matching the candidate import root(s) were observed in source. The import root is a guess from the distribution name because no installed metadata was found."
+    },
+    {
+      "package": "idna",
+      "declarations": [
+        {
+          "file": "pyproject.toml",
+          "line": 22,
+          "constraint": "==2.7",
+          "section": "project.dependencies"
+        },
+        {
+          "file": "requirements.txt",
+          "line": 10,
+          "constraint": "==2.7",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "idna"
+      ],
+      "mapping_source": "name_heuristic",
+      "imports_found": [],
+      "usage_status": "mapping_unavailable",
+      "interpretation": "The distribution is not installed in the active environment, so its import names are unknown; the name-based guess found no import. Install it (or supply metadata) to get a reliable mapping.",
+      "review_lead_id": "U-39AC5AE0C1"
+    },
+    {
+      "package": "jinja2",
+      "declarations": [
+        {
+          "file": "pyproject.toml",
+          "line": 16,
+          "constraint": "==2.11.3",
+          "section": "project.dependencies"
+        },
+        {
+          "file": "requirements.txt",
+          "line": 4,
+          "constraint": "==2.11.3",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "jinja2"
+      ],
+      "mapping_source": "name_heuristic",
+      "imports_found": [
+        {
+          "file": "linkwatch/report.py",
+          "line": 3,
+          "module": "jinja2",
+          "import_name": "jinja2",
+          "alias": null,
+          "kind": "from_import",
+          "statement": "from jinja2 import Environment, FileSystemLoader, select_autoescape"
+        }
+      ],
+      "usage_status": "import_observed",
+      "interpretation": "Import(s) matching the candidate import root(s) were observed in source. The import root is a guess from the distribution name because no installed metadata was found."
+    },
+    {
+      "package": "nose",
+      "declarations": [
+        {
+          "file": "requirements-dev.txt",
+          "line": 2,
+          "constraint": "==1.3.7",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "nose"
+      ],
+      "mapping_source": "name_heuristic",
+      "imports_found": [],
+      "usage_status": "mapping_unavailable",
+      "interpretation": "The distribution is not installed in the active environment, so its import names are unknown; the name-based guess found no import. Install it (or supply metadata) to get a reliable mapping.",
+      "review_lead_id": "U-F1082F3688"
+    },
+    {
+      "package": "pydantic",
+      "declarations": [
+        {
+          "file": "pyproject.toml",
+          "line": 17,
+          "constraint": ">=2",
+          "section": "project.dependencies"
+        },
+        {
+          "file": "requirements.txt",
+          "line": 5,
+          "constraint": "==1.10.13",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "pydantic"
+      ],
+      "mapping_source": "name_heuristic",
+      "imports_found": [
+        {
+          "file": "linkwatch/config.py",
+          "line": 4,
+          "module": "pydantic",
+          "import_name": "pydantic",
+          "alias": null,
+          "kind": "from_import",
+          "statement": "from pydantic import BaseModel, validator"
+        }
+      ],
+      "usage_status": "import_observed",
+      "interpretation": "Import(s) matching the candidate import root(s) were observed in source. The import root is a guess from the distribution name because no installed metadata was found."
+    },
+    {
+      "package": "pytest",
+      "declarations": [
+        {
+          "file": "requirements-dev.txt",
+          "line": 1,
+          "constraint": "(unspecified)",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "_pytest",
+        "py",
+        "pytest"
+      ],
+      "mapping_source": "installed_metadata",
+      "imports_found": [
+        {
+          "file": "tests/conftest.py",
+          "line": 6,
+          "module": "pytest",
+          "import_name": "pytest",
+          "alias": null,
+          "kind": "import",
+          "statement": "import pytest"
+        }
+      ],
+      "usage_status": "import_observed",
+      "interpretation": "Import(s) matching the candidate import root(s) were observed in source."
+    },
+    {
+      "package": "python-dateutil",
+      "declarations": [
+        {
+          "file": "pyproject.toml",
+          "line": 23,
+          "constraint": "(unspecified)",
+          "section": "project.dependencies"
+        },
+        {
+          "file": "requirements.txt",
+          "line": 11,
+          "constraint": "(unspecified)",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "python_dateutil"
+      ],
+      "mapping_source": "name_heuristic",
+      "imports_found": [],
+      "usage_status": "mapping_unavailable",
+      "interpretation": "The distribution is not installed in the active environment, so its import names are unknown; the name-based guess found no import. Install it (or supply metadata) to get a reliable mapping.",
+      "review_lead_id": "U-9C6F3AC19D"
+    },
+    {
+      "package": "requests",
+      "declarations": [
+        {
+          "file": "pyproject.toml",
+          "line": 15,
+          "constraint": "==2.31.0",
+          "section": "project.dependencies"
+        },
+        {
+          "file": "requirements.txt",
+          "line": 3,
+          "constraint": "==2.31.0",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "requests"
+      ],
+      "mapping_source": "name_heuristic",
+      "imports_found": [
+        {
+          "file": "linkwatch/checker.py",
+          "line": 5,
+          "module": "requests",
+          "import_name": "requests",
+          "alias": null,
+          "kind": "import",
+          "statement": "import requests"
+        },
+        {
+          "file": "linkwatch/checker.py",
+          "line": 6,
+          "module": "requests",
+          "import_name": "requests",
+          "alias": null,
+          "kind": "from_import",
+          "statement": "from requests import Session as S"
+        },
+        {
+          "file": "linkwatch/encoding.py",
+          "line": 5,
+          "module": "requests",
+          "import_name": "requests.utils",
+          "alias": null,
+          "kind": "from_import",
+          "statement": "from requests.utils import _parse_content_type_header"
+        },
+        {
+          "file": "linkwatch/http_patch.py",
+          "line": 1,
+          "module": "requests",
+          "import_name": "requests",
+          "alias": null,
+          "kind": "import",
+          "statement": "import requests"
+        }
+      ],
+      "usage_status": "import_observed",
+      "interpretation": "Import(s) matching the candidate import root(s) were observed in source. The import root is a guess from the distribution name because no installed metadata was found."
+    },
+    {
+      "package": "rich",
+      "declarations": [
+        {
+          "file": "pyproject.toml",
+          "line": 24,
+          "constraint": "(unspecified)",
+          "section": "project.dependencies"
+        },
+        {
+          "file": "requirements.txt",
+          "line": 12,
+          "constraint": "(unspecified)",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "rich"
+      ],
+      "mapping_source": "name_heuristic",
+      "imports_found": [
+        {
+          "file": "linkwatch/cli.py",
+          "line": 2,
+          "module": "rich",
+          "import_name": "rich.console",
+          "alias": null,
+          "kind": "from_import",
+          "statement": "from rich.console import Console"
+        },
+        {
+          "file": "linkwatch/cli.py",
+          "line": 3,
+          "module": "rich",
+          "import_name": "rich.live",
+          "alias": null,
+          "kind": "from_import",
+          "statement": "from rich.live import Live"
+        },
+        {
+          "file": "linkwatch/cli.py",
+          "line": 4,
+          "module": "rich",
+          "import_name": "rich.table",
+          "alias": null,
+          "kind": "from_import",
+          "statement": "from rich.table import Table"
+        }
+      ],
+      "usage_status": "import_observed",
+      "interpretation": "Import(s) matching the candidate import root(s) were observed in source. The import root is a guess from the distribution name because no installed metadata was found."
+    },
+    {
+      "package": "setuptools",
+      "declarations": [
+        {
+          "file": "pyproject.toml",
+          "line": 2,
+          "constraint": ">=61",
+          "section": "build-system.requires"
+        },
+        {
+          "file": "pyproject.toml",
+          "line": 21,
+          "constraint": "==75.8.0",
+          "section": "project.dependencies"
+        },
+        {
+          "file": "requirements.txt",
+          "line": 9,
+          "constraint": "==75.8.0",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "setuptools"
+      ],
+      "mapping_source": "name_heuristic",
+      "imports_found": [],
+      "usage_status": "mapping_unavailable",
+      "interpretation": "The distribution is not installed in the active environment, so its import names are unknown; the name-based guess found no import. Install it (or supply metadata) to get a reliable mapping.",
+      "review_lead_id": "U-90F0EE6B9B"
+    },
+    {
+      "package": "six",
+      "declarations": [
+        {
+          "file": "pyproject.toml",
+          "line": 19,
+          "constraint": "(unspecified)",
+          "section": "project.dependencies"
+        },
+        {
+          "file": "requirements.txt",
+          "line": 7,
+          "constraint": "(unspecified)",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "six"
+      ],
+      "mapping_source": "name_heuristic",
+      "imports_found": [],
+      "usage_status": "mapping_unavailable",
+      "interpretation": "The distribution is not installed in the active environment, so its import names are unknown; the name-based guess found no import. Install it (or supply metadata) to get a reliable mapping.",
+      "review_lead_id": "U-437C6776AB"
+    },
+    {
+      "package": "toml",
+      "declarations": [
+        {
+          "file": "pyproject.toml",
+          "line": 13,
+          "constraint": "==0.10.2",
+          "section": "project.dependencies"
+        },
+        {
+          "file": "requirements.txt",
+          "line": 1,
+          "constraint": "==0.10.2",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "toml"
+      ],
+      "mapping_source": "name_heuristic",
+      "imports_found": [
+        {
+          "file": "linkwatch/config.py",
+          "line": 3,
+          "module": "toml",
+          "import_name": "toml",
+          "alias": null,
+          "kind": "import",
+          "statement": "import toml"
+        }
+      ],
+      "usage_status": "import_observed",
+      "interpretation": "Import(s) matching the candidate import root(s) were observed in source. The import root is a guess from the distribution name because no installed metadata was found."
+    }
+  ],
+  "review_leads": [
+    {
+      "id": "U-39AC5AE0C1",
+      "type": "usage_review",
+      "severity": "info",
+      "package": "idna",
+      "usage_status": "mapping_unavailable",
+      "status": "observed",
+      "title": "No confirmed static import for idna",
+      "summary": "The distribution is not installed in the active environment, so its import names are unknown; the name-based guess found no import. Install it (or supply metadata) to get a reliable mapping."
+    },
+    {
+      "id": "U-F1082F3688",
+      "type": "usage_review",
+      "severity": "info",
+      "package": "nose",
+      "usage_status": "mapping_unavailable",
+      "status": "observed",
+      "title": "No confirmed static import for nose",
+      "summary": "The distribution is not installed in the active environment, so its import names are unknown; the name-based guess found no import. Install it (or supply metadata) to get a reliable mapping."
+    },
+    {
+      "id": "U-9C6F3AC19D",
+      "type": "usage_review",
+      "severity": "info",
+      "package": "python-dateutil",
+      "usage_status": "mapping_unavailable",
+      "status": "observed",
+      "title": "No confirmed static import for python-dateutil",
+      "summary": "The distribution is not installed in the active environment, so its import names are unknown; the name-based guess found no import. Install it (or supply metadata) to get a reliable mapping."
+    },
+    {
+      "id": "U-90F0EE6B9B",
+      "type": "usage_review",
+      "severity": "info",
+      "package": "setuptools",
+      "usage_status": "mapping_unavailable",
+      "status": "observed",
+      "title": "No confirmed static import for setuptools",
+      "summary": "The distribution is not installed in the active environment, so its import names are unknown; the name-based guess found no import. Install it (or supply metadata) to get a reliable mapping."
+    },
+    {
+      "id": "U-437C6776AB",
+      "type": "usage_review",
+      "severity": "info",
+      "package": "six",
+      "usage_status": "mapping_unavailable",
+      "status": "observed",
+      "title": "No confirmed static import for six",
+      "summary": "The distribution is not installed in the active environment, so its import names are unknown; the name-based guess found no import. Install it (or supply metadata) to get a reliable mapping."
+    }
+  ],
+  "parse_errors": [],
+  "unresolved_dynamic_imports": {},
+  "mapping": {
+    "source": "installed_metadata_of_active_python",
+    "entries": 9
+  },
+  "exclusions": {
+    "excluded_directories_encountered": [
+      {
+        "path": ".git",
+        "reason": "excluded_name"
+      },
+      {
+        "path": ".pytest_cache",
+        "reason": "excluded_name"
+      },
+      {
+        "path": ".venv",
+        "reason": "excluded_name"
+      },
+      {
+        "path": "linkwatch/__pycache__",
+        "reason": "excluded_name"
+      },
+      {
+        "path": "patchproof/__pycache__",
+        "reason": "excluded_name"
+      },
+      {
+        "path": "tests/__pycache__",
+        "reason": "excluded_name"
+      }
+    ]
+  },
+  "limitations": [
+    "Import-to-distribution mappings come from metadata installed in the Python environment running this tool; uninstalled distributions fall back to a name-based guess and are labelled mapping_unavailable when unmatched.",
+    "Dynamic imports with non-literal targets, plugin loading, entry points, runtime loading, CLI-only use, data-only packages and optional features cannot be detected statically.",
+    "Literal importlib.import_module('x') / __import__('x') calls are recorded as kind=dynamic_literal.",
+    "A missing import must never be treated as proof that a package is unused; do not remove packages on this basis.",
+    "Import roots are matched at top level only; namespace packages shared by several distributions may over-match."
+  ]
+}
