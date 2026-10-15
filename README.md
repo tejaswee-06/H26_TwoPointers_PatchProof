@@ -1,629 +1,191 @@
-# 🔬 PATCHPROOF
+# PatchProof — Evidence Before Upgrades
 
-## From Dependency Conflicts to Evidence-Backed Migration Decisions
+PatchProof is a local-first dependency maintenance tool. It scans a Python repository's manifests and source,
+correlates failures into candidate root causes, hands a bounded evidence bundle to a local Gemma 4 model for
+migration options, proves (or disproves) a change by running your own commands before and after it in disposable
+environments, and exports everything as a **Dependency Exit Capsule** (JSON + Markdown).
 
-<p align="center">
-  <b>HACKTOBERFEST</b>
-  <br/>
-  <b>K. J. Somaiya College of Engineering</b>
-  <br/><br/>
-  <sub>Team TwoPointers • AI-Assisted Dependency Migration Intelligence</sub>
-</p>
+Everything runs on `127.0.0.1`. No cloud service, no paid API, no telemetry.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.12%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/>
-  <img src="https://img.shields.io/badge/AI-Gemma-4285F4?style=for-the-badge" alt="Gemma"/>
-  <img src="https://img.shields.io/badge/Inference-Ollama-111111?style=for-the-badge" alt="Ollama"/>
-  <img src="https://img.shields.io/badge/Testing-Pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white" alt="Pytest"/>
-  <img src="https://img.shields.io/badge/Output-Structured%20JSON-7952B3?style=for-the-badge" alt="JSON"/>
-  <img src="https://img.shields.io/badge/Approach-Evidence--First-16A34A?style=for-the-badge" alt="Evidence-first"/>
-</p>
-
----
-
-# 🏆 Competition
-
-## HACKTOBERFEST — PROJECT SUBMISSION
-
-**Institution:** K. J. Somaiya College of Engineering
-
-**Team Name:** TwoPointers
-
-### Team Members
-
-- **Tejaswee Rajput** — Team Lead
-- **Sohana Pilli** — Team Member
-- **Rahul Sharma** — Team Member
-
----
-
-# 🚨 The Problem
-
-Modern software projects depend on an increasingly complex ecosystem of external libraries, packages, and frameworks.
-
-As projects evolve, dependency declarations can become inconsistent, packages can remain unused, and upgrades can introduce compatibility problems that are difficult to diagnose.
-
-A dependency listed in one configuration file might require a different version from the one declared elsewhere. A package may be present in the dependency manifest without an obvious corresponding source-code import. An AI-generated migration suggestion may sound convincing without being supported by actual project evidence.
-
-Developers are left to investigate these problems manually across configuration files, source code, compatibility constraints, and test results.
-
-### The challenges
-
-- Conflicting dependency declarations across project manifests.
-- Limited visibility into how declared dependencies are used.
-- Difficult migration decisions involving multiple possible versions.
-- AI-generated recommendations that may lack supporting evidence.
-- Confusion between a suspected problem and a confirmed root cause.
-- Risk of treating a proposed fix as successful without running independent checks.
-- Fragmented diagnostic information that is difficult to reuse or audit.
-
-The fundamental question is:
-
-> **How can developers move from dependency conflicts to trustworthy migration decisions without blindly trusting AI-generated fixes?**
-
----
-
-# 💡 Our Solution
-
-**PatchProof** is an evidence-driven dependency analysis and migration intelligence system built on the LinkWatch project foundation.
-
-It combines dependency scanning, source-code usage tracing, local Gemma-powered reasoning, structured recommendations, and independent verification into a transparent migration workflow.
-
-Instead of immediately changing dependencies based on an AI response, PatchProof first gathers evidence, analyzes the problem, proposes a resolution, and keeps verification outcomes separate from AI-generated hypotheses.
-
-### The PatchProof pipeline
-
-- 🔍 Dependency manifest scanning
-- 📄 Declaration conflict detection
-- 🧭 Source-code dependency usage tracing
-- 🧠 Local Gemma-assisted migration reasoning
-- 🧾 Evidence-grounded recommendations
-- 📦 Structured JSON artifacts
-- 🧪 Automated testing
-- ⚖️ Independent verification workflow
-- 🔐 Explicit distinction between proposed and verified outcomes
-- 🔄 Reusable dependency migration evidence
-
-PatchProof is designed around a simple principle:
-
-> **AI may propose the fix. Evidence and verification must justify the result.**
-
----
-
-# 🎯 Core Principle
-
-PatchProof does not treat an AI-generated answer as proof that a dependency problem has been solved.
-
-The system separates diagnosis, reasoning, and verification.
-
-```text
-DISCOVER
-   ↓
-COLLECT EVIDENCE
-   ↓
-TRACE USAGE
-   ↓
-ANALYSE CONFLICTS
-   ↓
-GENERATE MIGRATION ADVICE
-   ↓
-VALIDATE RECOMMENDATION
-   ↓
-INDEPENDENT VERIFICATION
-   ↓
-RECORD OUTCOME
-   ↓
-EXPORT EVIDENCE
-```
-
-The evidence layer records what was observed.
-
-The AI layer proposes what could be done.
-
-The verification layer determines what has actually been established.
-
----
-
-# 🔎 Dependency Evidence Scanner
-
-The dependency scanner examines supported project manifests and extracts declared dependencies for comparison.
-
-### Responsibilities
-
-- Discover supported dependency configuration files.
-- Extract dependency names and version specifications.
-- Compare declarations across manifests.
-- Identify conflicting constraints.
-- Produce structured findings for downstream analysis.
-
-### Example finding
-
-Consider a project with these declarations:
-
-| File | Dependency declaration |
+| Definition-of-done step | State in this build |
 |---|---|
-| `requirements.txt` | `pydantic==1.10.13` |
-| `pyproject.toml` | `pydantic>=2` |
-
-PatchProof identifies that the two files declare incompatible version requirements for the same dependency.
-
-```text
-PROJECT MANIFESTS
-       │
-       ▼
-EXTRACT DECLARATIONS
-       │
-       ▼
-NORMALIZE DEPENDENCY NAMES
-       │
-       ▼
-COMPARE VERSION CONSTRAINTS
-       │
-       ▼
-IDENTIFY INCONSISTENCIES
-       │
-       ▼
-GENERATE EVIDENCE REPORT
-```
-
-A conflict is an observed inconsistency, not automatically proof of a runtime failure. Additional compatibility and runtime checks are needed to determine the appropriate resolution.
+| Scan (manifests, findings with stable IDs and source lines) | **Working** — Person 1 engine, in the dashboard and CLI |
+| Evidence-backed diagnosis | **Working** — new `patchproof/diagnose.py`; every candidate is a labelled hypothesis |
+| Local Gemma 4 analysis | **Working** — Person 2's Ollama adapter (`patchproof/ai/`) is plugged into the engine. Needs a local Ollama with the Gemma 4 model pulled; without it the dashboard shows `UNAVAILABLE` with the reason and generates nothing. Output is always `AI PROPOSAL` / `PROPOSED`, commands `NOT_RUN`, and now includes `diagnostic_hypotheses`. ([docs/AI_INTEGRATION.md](docs/AI_INTEGRATION.md)) |
+| Independent verification | **Working** — consent-gated, cancellable, disposable copy + fresh venv per phase |
+| JSON + Markdown capsule | **Working** — built by the engine, exported from the dashboard |
 
 ---
 
-# 🧭 Source Usage Intelligence
+## 1. Requirements
 
-A dependency manifest tells developers what a project declares. Source-code analysis helps explain where those dependencies appear to be used.
+* Windows 10/11, macOS or Linux
+* **Python 3.11+** (`python --version`)
+* **Node.js 20+** and npm (`node --version`) — only needed to build the dashboard
+* Internet access only for `pip install` / `npm install`, and for verification runs whose setup commands download packages
 
-PatchProof's usage tracer searches supported project files for dependency imports and records matching locations.
+## 1b. Local Gemma 4 (Person 2's adapter)
 
-### Usage classifications
-
-- **IMPORT_FOUND** — a matching import was identified.
-- **NO_MATCHING_IMPORT_FOUND** — no matching import was found by the implemented scan.
-
-The second classification does not, by itself, prove that a package is safe to remove. Dynamic imports, indirect usage, plugins, command-line entry points, and other mechanisms may require additional investigation.
-
-### Usage tracing workflow
-
-```mermaid
-flowchart TD
-    A["Dependency Manifest"] --> B["Extract Declared Packages"]
-    C["Application Source"] --> D["Scan Import Statements"]
-    E["Test Source"] --> D
-
-    B --> F["Match Packages to Source Usage"]
-    D --> F
-
-    F --> G{"Matching Import Found?"}
-    G -->|Yes| H["Record Import Evidence"]
-    G -->|No| I["Record No-Match Finding"]
-
-    H --> J["Generate Usage Report"]
-    I --> J
+```cmd
+ollama serve                         :: if not already running
+ollama pull gemma4:e2b-it-q4_K_M     :: default model; override with PATCHPROOF_MODEL
 ```
 
-This creates a more useful diagnostic picture by combining declared dependencies with observable source usage.
+Optional env vars: `PATCHPROOF_MODEL`, `OLLAMA_URL` (default `http://127.0.0.1:11434/api/chat`). Then use **Run Gemma 4 analysis**
+on the Migration page, or the CLI:
+`python -m patchproof.ai.migration_agent out\patchproof-report.json --usage out\patchproof-usage-report.json --verification out\verification.json`
+(writes `ai-analysis.json` + `ai-runtime-proof.json`). The LinkWatch sample project is in `examples/linkwatch_project`, with P2's real
+recorded output in `examples/linkwatch_ai_output`. P2's notes: `docs/person2/`.
 
----
+## 2. Install and start (Windows CMD)
 
-# 🧠 Local AI Migration Intelligence
+Run these from the folder that contains this README:
 
-PatchProof uses a locally hosted Gemma model through Ollama to help interpret dependency findings and formulate migration recommendations.
-
-Rather than sending an unstructured question to a model, the migration agent supplies relevant findings and project context, then processes the model response into a structured recommendation.
-
-### AI processing capabilities
-
-- Interpret dependency declaration conflicts.
-- Compare possible migration approaches.
-- Explain potential compatibility concerns.
-- Generate structured migration advice.
-- Preserve the distinction between observed evidence and proposed solutions.
-- Provide a machine-readable output for downstream tooling.
-
-### Why local inference?
-
-- Runs inference through a local Ollama service.
-- Avoids requiring a hosted inference API for the configured model.
-- Makes the model dependency explicit and testable.
-- Supports experimentation with migration reasoning using local project evidence.
-
-Local execution does not guarantee that a recommendation is correct. Model availability, response validation, and independent verification remain important.
-
----
-
-# 🏗️ System Architecture
-
-The following diagram describes PatchProof's evidence-driven processing architecture.
-
-```mermaid
-flowchart TD
-    A["Project Repository"] --> B["Dependency Manifests"]
-    A --> C["Application Source and Tests"]
-
-    B --> D["Dependency Scanner"]
-    C --> E["Source Usage Tracer"]
-
-    D --> F["Dependency Evidence"]
-    E --> G["Usage Evidence"]
-
-    F --> H["Migration Agent"]
-    G --> H
-
-    H --> I["Ollama Adapter"]
-    I --> J["Local Gemma Model"]
-    J --> I
-
-    I --> K["Structured Migration Advice"]
-    K --> L["Recommendation Validation"]
-
-    F --> M["Independent Verification"]
-    G --> M
-    L --> M
-
-    M --> N["Verification Outcome"]
-    K --> O["Migration Artifacts"]
-    N --> O
-
-    O --> P["JSON Reports and Downstream Integration"]
-```
-
-*The diagram represents the intended end-to-end architecture. The exact verification and downstream integration capabilities depend on the components included in the final submitted build.*
-
----
-
-# 🔄 End-to-End Workflow
-
-PatchProof is organized into distinct stages so that each stage has a clear responsibility.
-
-```mermaid
-flowchart TD
-    A(["Start"]) --> B["Read Project Manifests"]
-    B --> C["Scan Dependency Declarations"]
-    C --> D["Trace Source Usage"]
-    D --> E["Create Evidence Reports"]
-
-    E --> F["Build Migration Context"]
-    F --> G["Invoke Local Gemma Model"]
-    G --> H{"AI Response Received?"}
-
-    H -->|No| I["Report Model or Inference Failure"]
-    I --> Z(["End"])
-
-    H -->|Yes| J["Validate Structured Recommendation"]
-    J --> K{"Recommendation Valid?"}
-
-    K -->|No| L["Report Validation Failure"]
-    L --> Z
-
-    K -->|Yes| M["Record Proposed Recommendation"]
-    M --> N["Run Independent Checks"]
-
-    N --> O{"Verification Result"}
-    O -->|Passed| P["Record Verified Outcome"]
-    O -->|Failed| Q["Record Failed Verification"]
-    O -->|Not Run| R["Keep Outcome Unverified"]
-
-    P --> S["Export Available Artifacts"]
-    Q --> S
-    R --> S
-    S --> Z
-```
-
-A recommendation is not automatically marked as successful merely because the model returned a valid response.
-
----
-
-# 🧾 Evidence vs. Hypothesis vs. Verification
-
-One of PatchProof's central design goals is to preserve the difference between what the system observes and what it infers.
-
-| Stage | Meaning |
-|---|---|
-| Observed evidence | Information extracted from project files or tool results |
-| AI hypothesis | A model-generated explanation or proposed resolution |
-| Validated recommendation | A recommendation that satisfies the implemented output-validation rules |
-| Verified outcome | A result supported by completed independent checks |
-
-### Example
-
-```text
-OBSERVATION
-    │
-    └── Two manifests declare conflicting Pydantic constraints.
-             │
-             ▼
-AI HYPOTHESIS
-    │
-    └── Propose a compatible dependency strategy.
-             │
-             ▼
-VALIDATION
-    │
-    └── Check the recommendation's structure and required fields.
-             │
-             ▼
-INDEPENDENT VERIFICATION
-    │
-    ├── Checks pass → Record verified outcome.
-    ├── Checks fail → Record failed verification.
-    └── Checks not run → Keep outcome unverified.
-```
-
-This separation helps prevent plausible-sounding model output from being mistaken for an established engineering result.
-
----
-
-# 🧪 Testing and Reliability
-
-PatchProof includes automated tests for the implemented analysis and AI components.
-
-Testing can help establish whether:
-
-- Dependency findings are extracted correctly for supported manifests.
-- Source usage reports contain the expected classifications.
-- AI responses are handled according to the adapter's validation rules.
-- Invalid or unexpected responses are handled appropriately.
-- Implemented schema and migration logic behaves as expected.
-
-Run the tests from the repository root:
-
-```bash
-python -m pytest -q
-```
-
-For syntax validation of the AI package:
-
-```bash
-python -m compileall -q patchproof/ai
-```
-
-A passing test suite establishes that the covered tests pass. It does not automatically establish that every suggested dependency migration is safe or that every possible runtime failure has been detected.
-
----
-
-# 📦 Structured Evidence Artifacts
-
-PatchProof generates machine-readable outputs that can be inspected or consumed by other tools.
-
-| Artifact | Purpose |
-|---|---|
-| `patchproof-report.json` | Dependency findings and manifest evidence |
-| `patchproof-usage-report.json` | Source usage observations |
-| `patchproof-ai-advice.json` | Structured migration recommendations, when generation succeeds |
-
-The AI advice file depends on a successful inference run. If the configured model is unavailable or inference fails, that file may not be generated.
-
-### Example output lifecycle
-
-```text
-PROJECT
-   │
-   ├── patchproof-report.json
-   │        └── Dependency findings
-   │
-   ├── patchproof-usage-report.json
-   │        └── Source usage evidence
-   │
-   └── patchproof-ai-advice.json
-            └── AI migration recommendations
-```
-
-The reports provide a foundation for integration into a dashboard, CI pipeline, or a reusable dependency migration artifact.
-
----
-
-# 🛠️ Technology Stack
-
-## Core implementation
-
-- Python
-- JSON
-- TOML and requirements-based dependency manifests
-- Source-code import analysis
-
-## AI / ML
-
-- Gemma
-- Ollama
-- Structured model-response processing
-- Evidence-grounded migration reasoning
-
-## Testing
-
-- Pytest
-- Automated component tests
-- Python compilation checks
-
-## Foundation
-
-- LinkWatch
-- Existing project configuration, reporting, and test infrastructure where retained in the submitted build
-
----
-
-# 📁 Project Structure
-
-The following is a representative view of the PatchProof components. Preserve the actual directory structure in the submitted repository.
-
-```text
-PatchProof/
-│
-├── patchproof/
-│   ├── scanner.py
-│   ├── usage.py
-│   │
-│   └── ai/
-│       ├── migration_agent.py
-│       ├── ollama_adapter.py
-│       └── ...
-│
-├── linkwatch/
-│   └── ... original LinkWatch components
-│
-├── tests/
-│   ├── test_ai_adapter.py
-│   ├── test_ai_schemas.py
-│   └── ...
-│
-├── requirements.txt
-├── pyproject.toml
-└── README.md
-```
-
----
-
-# 🚀 Getting Started
-
-## Prerequisites
-
-Ensure the following are available:
-
-- Python compatible with the project's dependencies
-- Git
-- Ollama
-- The exact Gemma model configured by the migration agent
-
-## 1. Clone the repository
-
-```bash
-git clone <YOUR_PATCHPROOF_REPOSITORY_URL>
-cd <YOUR_PATCHPROOF_DIRECTORY>
-```
-
-## 2. Create a virtual environment
-
-### Windows — Command Prompt
-
-```bat
-py -3.12 -m venv .venv
+```cmd
+python -m venv .venv
 .venv\Scripts\activate
+python -m pip install -r requirements-dev.txt
+
+cd frontend
+npm install
+npm run build
+cd ..
+
+python -m patchproof.server
 ```
+
+The server prints `PatchProof 0.4.0 — local dashboard at http://127.0.0.1:8765/` and opens your browser.
+Stop it with **Ctrl+C**. Options: `--port 8765`, `--workspace .patchproof-workspace`, `--no-browser`.
+
+> Usage tracing maps distributions to import names using the metadata of the Python environment that runs the
+> server. For the most accurate mapping, start the server from an environment where the scanned project's
+> dependencies are installed; otherwise packages are labelled `mapping_unavailable` (a review lead, never "unused").
+
+### Development mode (hot reload)
+
+Two Command Prompts:
+
+```cmd
+:: terminal 1 — engine/API
+.venv\Scripts\activate
+python -m patchproof.server --no-browser
+
+:: terminal 2 — dashboard with hot reload (proxies /api to 127.0.0.1:8765)
+cd frontend
+npm run dev
+```
+
+Open http://127.0.0.1:5173.
 
 ### macOS / Linux
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
+Same steps with `python3 -m venv .venv` and `source .venv/bin/activate`.
+
+## 3. Test and build
+
+```cmd
+.venv\Scripts\activate
+python -m pytest -q
+
+cd frontend
+npm test
+npm run build
 ```
 
-Use a Python version supported by the final project's dependency set.
+`pytest` needs no internet; a few tests create real virtual environments from locally built wheels (≈1 minute).
+Results recorded for this delivery: [docs/TEST_RESULTS.md](docs/TEST_RESULTS.md).
 
-## 3. Install dependencies
+## 4. Command line (no dashboard)
 
-```bash
-python -m pip install -r requirements.txt
+```cmd
+python -m patchproof.run --root C:\path\to\LinkWatch --out-dir out
+python -m patchproof.run --root C:\path\to\LinkWatch --out-dir out --verify-config verify-config.json [--ai ai-analysis.json]
+python -m patchproof.diagnose --scan out\patchproof-report.json --usage out\patchproof-usage-report.json --verification out\verification.json --output out\diagnosis.json
 ```
 
-If the repository contains a development requirements file, install it as appropriate:
+Scan-only is the default; repository commands run **only** when `--verify-config` is given. Config format and exit
+codes: [docs/person1/PERSON1_RUNBOOK.md](docs/person1/PERSON1_RUNBOOK.md) and [PERSON1_JSON_CONTRACTS.md](docs/person1/PERSON1_JSON_CONTRACTS.md).
 
-```bash
-python -m pip install -r requirements-dev.txt
+## 5. Architecture
+
+```
+ Browser (React 18 + Vite build, served by the engine)
+   │  fetch /api/*  (same origin; mutating calls carry X-PatchProof-Client: 1)
+   ▼
+ patchproof/server.py  — stdlib ThreadingHTTPServer on 127.0.0.1 only
+   ├─ scan job (thread)      → scanner.scan_repository → usage.trace_usage → diagnose.diagnose → capsule.build_capsule
+   ├─ verify job (process)   → python -m patchproof.verify --config … --progress   (cancellable process tree)
+   │                            progress lines "PATCHPROOF_PROGRESS {json}" on stderr → live timeline
+   ├─ AI job (thread)        → ai_bridge.run_adapter(bundle) → patchproof.ai.analyze → local Ollama (Gemma 4)
+   ├─ import                 → classify + validate JSON artifacts, re-derive verification status
+   └─ workspace/runs/<id>/   → run.json, patchproof-report.json, patchproof-usage-report.json,
+                                verification.json, ai-analysis.json, diagnosis.json,
+                                dependency-exit-capsule.json/.md, verify-config.json, verification.log
 ```
 
-## 4. Check Ollama
+**Boundaries kept from the work division.** Person 1's engine establishes facts (scan, usage, verification);
+`diagnose.py` only correlates those artifacts. Person 2's Gemma 4 adapter is a pluggable module the server discovers;
+its output is validated and always shown as `AI PROPOSAL` / `PROPOSED`, with suggested commands `NOT_RUN`. Person 3's
+dashboard presents, never decides: verification status comes from the capsule's `verification_assessment`, which
+re-derives status from evidence and ignores a bare `verified: true`.
 
-Check the installed models:
+**Safety model**
+* Loopback only; requests with a non-loopback `Host` (DNS rebinding) or foreign `Origin` are rejected; state-changing calls need a custom header, so other websites cannot trigger them.
+* Repository commands run only after explicit consent to the exact command list (checkbox resets whenever the config changes; the server returns `428` without `consent: true`).
+* Every phase runs in a disposable copy with its own venv (`isolation: venv`); `isolation: none` is labelled *not isolated* and refuses `pip install`. Isolation is not a sandbox: setup commands have network access.
+* Artifacts never store absolute paths: verification output is scrubbed (`<WORKDIR>`, `<TARGET>`, `<TMP>`, `<HOME>`, `pytest-of-<user>`); the API returns folder names only.
 
-```bash
-ollama list
-```
+**API** (all JSON): `GET /api/health`, `GET /api/runs`, `POST /api/runs/scan`, `GET|DELETE /api/runs/<id>`,
+`POST /api/runs/<id>/rescan|rebuild|verify`, `GET /api/runs/<id>/verify-template`, `POST|DELETE /api/runs/<id>/ai`,
+`POST /api/runs/<id>/ai/run`, `GET /api/runs/<id>/ai-input`, `GET /api/runs/<id>/files/<artifact>`, `POST /api/import`,
+`GET /api/jobs/<id>`, `POST /api/jobs/<id>/cancel`, `GET /api/fs?path=`.
 
-If the model configured in the application is missing, install the matching model identifier. The current configuration expects:
+## 6. Dashboard tour
 
-```bash
-ollama pull gemma4:e2b-it-q4_K_M
-```
+| Page | What it shows (all from real artifacts) |
+|---|---|
+| Landing | Hero with the live LinkWatch evidence chain streamed from the engine; how it works; evidence labels |
+| Overview | Five-stage evidence chain, metrics, evidence-based health checks (no invented score), severity distribution, leading cause, before/after, scan history |
+| Scans & runs | Folder path + folder browser, fixture quick-scan, JSON import, live progress with cancel, history with rescan/delete |
+| Findings | Manifest findings (F-) and usage leads (U-), search / voice search, severity filter, evidence blocks with file:line, observed vs inferred, export |
+| Usage tracing | Package → import evidence, status filters, mapping source, parse errors, interpretation notes |
+| Root cause | Candidate causes: observed evidence by source, inference, uncertainty, discriminating checks (NOT_RUN); parsed failure chains |
+| Migration | Compatibility evidence, Gemma 4 pending/ready state, evidence bundle, AI import, options with risks/tests/rollback |
+| Verification lab | Form or JSON config, consent review, live command timeline, cancel, before/after comparison, env diff, isolation |
+| Exit Capsule | Artifact states, missing notices, rendered Markdown, Markdown source, JSON inspector, JSON/Markdown export, rebuild |
 
-If Ollama cannot find that model identifier, check the available model name and update the application configuration to match a supported installed model. Do not assume that a different model name will work without updating the configuration.
+Dark and light themes, reduced motion (also follows the OS), larger text, higher contrast, keyboard navigation and
+skip link, read-aloud and voice search where the browser supports them. Layouts are tested at 360–1440 px.
 
-Ensure the local Ollama service is running before invoking the migration agent.
+## 7. Evidence labels
 
-## 5. Run dependency scanning
+| Label | Meaning |
+|---|---|
+| `OBSERVED` | Read from repository files or captured command output |
+| `HYPOTHESIS` | Candidate cause derived from observed evidence — not proven |
+| `AI PROPOSAL` / `PROPOSED` | Model output; not applied, not verified |
+| `NOT_RUN` | A suggested command PatchProof has not run |
+| `VERIFIED` | Only for a recorded `VERIFIED_CHANGE` with baseline, change and after-run evidence |
+| `BLOCKED` | Missing or could not run — nothing substituted |
 
-```bash
-python -m patchproof.scanner
-```
+## 8. Bundled data
 
-This scans the supported manifests and generates the dependency evidence report.
+* `examples/linkwatch_artifacts/` — real engine output for the organizer's LinkWatch repo, produced on a teammate's Windows machine (see its README). Shown as the read-only run *LinkWatch — imported engine artifacts*. The OS user name inside a pytest temp path was redacted to `<user>`; no result field was changed.
+* `examples/compat_fixture/` — tiny synthetic project reproducing the Jinja2 2.11.3 / MarkupSafe 3.x mechanism. Scan and verify it live from **Scans & runs → Scan the fixture** (verification downloads packages from PyPI).
 
-## 6. Run source usage tracing
+## 9. Known limitations
 
-```bash
-python -m patchproof.usage
-```
+* **Gemma 4 is not integrated** (Person 2's adapter was not supplied). The end-to-end flow runs with the AI stage visibly pending.
+* Windows: the Python code paths include Windows handling (venv `Scripts\python.exe`, `taskkill /T` for cancellation, MIME fixes), but **nothing in this delivery was executed on Windows**; run the checklist in [docs/DEMO_CHECKLIST.md](docs/DEMO_CHECKLIST.md) first.
+* Verification needs the repository folder on the machine running the engine; imported/bundled runs are read-only.
+* Root-cause diagnosis pattern-matches captured output (ImportError / ModuleNotFoundError / pytest summaries); other failures are listed as unclassified.
+* A cancelled verification on Windows is force-killed; its temporary folder is removed by the server afterwards (best effort).
+* No security-advisory data is consulted; "review" severity is not a vulnerability rating.
 
-This produces the source usage report.
+## 10. More documentation
 
-## 7. Run AI migration intelligence
-
-```bash
-python -m patchproof.ai.migration_agent
-```
-
-This step requires a reachable Ollama service and the configured model to be installed.
-
-## 8. Inspect the reports
-
-```bash
-python -m json.tool patchproof-report.json
-python -m json.tool patchproof-usage-report.json
-python -m json.tool patchproof-ai-advice.json
-```
-
-The final command will work only if the migration agent generated the AI advice file successfully.
-
----
-
-# ⚠️ Important Implementation Notes
-
-- A declaration conflict is not automatically a confirmed runtime defect.
-- A missing source import is not sufficient proof that a dependency is unused.
-- An AI recommendation is not equivalent to a verified migration.
-- A missing model or failed inference must be treated as an execution failure, not a successful analysis.
-- The final submission should only claim verification, automated remediation, or dashboard functionality when those capabilities are implemented and demonstrated.
-
-These distinctions are part of PatchProof's evidence-first engineering approach.
-
----
-
-# 🗺️ Future Scope
-
-Potential extensions include:
-
-- A unified dashboard for dependency findings and migration recommendations.
-- Compatibility analysis across additional package ecosystems.
-- Isolated environments for testing proposed dependency upgrades.
-- Automated regression checks after a migration.
-- Comparison of multiple migration hypotheses.
-- CI integration for continuous dependency analysis.
-- A reusable **Dependency Exit Capsule** containing evidence, recommendations, verification results, and migration metadata.
-- Integration of the analysis pipeline into a broader developer workflow.
-
-These are potential extensions, not claims that every feature is already implemented.
-
----
-
-# 🤝 Acknowledgements
-
-PatchProof builds on the LinkWatch project foundation, extending its diagnostic workflow toward evidence-driven dependency analysis and AI-assisted migration reasoning.
-
-We acknowledge the original LinkWatch maintainers and contributors for the foundation on which this work builds.
-
----
-
-# 📄 License
-
-Retain the original project's license and required attribution notices. Refer to the repository's `LICENSE` file for the applicable terms.
-
----
-
-<p align="center">
-  <b>BUILT BY TEAM TWOPOINTERS</b>
-  <br/>
-  Tejaswee Rajput • Sohana Pilli • Rahul Sharma
-  <br/><br/>
-  <b>PATCHPROOF</b>
-  <br/>
-  <i>Don't blindly trust the fix. Examine the evidence. Verify the outcome.</i>
-</p>
+* [docs/CHANGES.md](docs/CHANGES.md) — files changed and features implemented
+* [docs/TEST_RESULTS.md](docs/TEST_RESULTS.md) — actual test results (passed / failed / skipped / untested)
+* [docs/DEMO_CHECKLIST.md](docs/DEMO_CHECKLIST.md) — 3-minute judge demo and rehearsal checklist
+* [docs/AI_INTEGRATION.md](docs/AI_INTEGRATION.md) — Gemma 4 adapter contract
+* [docs/person1/](docs/person1/) and [docs/person3/](docs/person3/) — the original Person 1 and Person 3 reports, kept for history
