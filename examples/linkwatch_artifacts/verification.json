@@ -1,0 +1,436 @@
+{
+  "schema_version": "2.0",
+  "report_type": "verification",
+  "status": "VERIFIED_CHANGE",
+  "status_reasons": [
+    "Baseline captured; declared dependency change applied with evidence; every baseline command was repeated after the change and passed."
+  ],
+  "verified": true,
+  "blockers": [],
+  "target": {
+    "name": "LinkWatch",
+    "path_policy": "directory name only"
+  },
+  "description": "",
+  "isolation": {
+    "requested": "venv",
+    "baseline_isolated": true,
+    "after_isolated": true,
+    "working_copy_used": true,
+    "note": "Fresh virtual environment created for this phase; the host environment was not modified."
+  },
+  "environment": {
+    "python_version": "3.12.1",
+    "python_implementation": "CPython",
+    "os": "Windows",
+    "os_release": "11",
+    "machine": "AMD64",
+    "interpreter_kind": "venv",
+    "environment_isolated": true,
+    "isolation_note": "Fresh virtual environment created for this phase; the host environment was not modified.",
+    "interpreter_probe_ok": true
+  },
+  "environments": {
+    "baseline": {
+      "python_version": "3.12.1",
+      "python_implementation": "CPython",
+      "os": "Windows",
+      "os_release": "11",
+      "machine": "AMD64",
+      "interpreter_kind": "venv",
+      "environment_isolated": true,
+      "isolation_note": "Fresh virtual environment created for this phase; the host environment was not modified.",
+      "interpreter_probe_ok": true
+    },
+    "after": {
+      "python_version": "3.12.1",
+      "python_implementation": "CPython",
+      "os": "Windows",
+      "os_release": "11",
+      "machine": "AMD64",
+      "interpreter_kind": "venv",
+      "environment_isolated": true,
+      "isolation_note": "Fresh virtual environment created for this phase; the host environment was not modified.",
+      "interpreter_probe_ok": true
+    }
+  },
+  "change": {
+    "declared": true,
+    "pip_install": [
+      "MarkupSafe==2.0.1"
+    ],
+    "file_edits": [],
+    "applied_with_evidence": true,
+    "environment_diff": [
+      {
+        "package": "markupsafe",
+        "before": "3.0.4",
+        "after": "2.0.1"
+      }
+    ],
+    "manifest_diff": []
+  },
+  "dependency_state": {
+    "before": {
+      "captured": true,
+      "packages": {
+        "appdirs": "1.4.4",
+        "certifi": "2026.7.22",
+        "chardet": "5.2.0",
+        "charset-normalizer": "3.5.2",
+        "click": "8.5.0",
+        "colorama": "0.4.6",
+        "idna": "2.7",
+        "iniconfig": "2.3.1",
+        "jinja2": "2.11.3",
+        "markdown-it-py": "4.2.0",
+        "markupsafe": "3.0.4",
+        "mdurl": "0.1.2",
+        "nose": "1.3.7",
+        "packaging": "26.3",
+        "pip": "23.2.1",
+        "pluggy": "1.6.0",
+        "pydantic": "1.10.13",
+        "pygments": "2.21.0",
+        "pytest": "9.1.1",
+        "python-dateutil": "2.9.0.post0",
+        "requests": "2.31.0",
+        "rich": "15.0.0",
+        "setuptools": "75.8.0",
+        "six": "1.17.0",
+        "toml": "0.10.2",
+        "typing-extensions": "4.16.0",
+        "urllib3": "2.8.0"
+      }
+    },
+    "after": {
+      "captured": true,
+      "packages": {
+        "appdirs": "1.4.4",
+        "certifi": "2026.7.22",
+        "chardet": "5.2.0",
+        "charset-normalizer": "3.5.2",
+        "click": "8.5.0",
+        "colorama": "0.4.6",
+        "idna": "2.7",
+        "iniconfig": "2.3.1",
+        "jinja2": "2.11.3",
+        "markdown-it-py": "4.2.0",
+        "markupsafe": "2.0.1",
+        "mdurl": "0.1.2",
+        "nose": "1.3.7",
+        "packaging": "26.3",
+        "pip": "23.2.1",
+        "pluggy": "1.6.0",
+        "pydantic": "1.10.13",
+        "pygments": "2.21.0",
+        "pytest": "9.1.1",
+        "python-dateutil": "2.9.0.post0",
+        "requests": "2.31.0",
+        "rich": "15.0.0",
+        "setuptools": "75.8.0",
+        "six": "1.17.0",
+        "toml": "0.10.2",
+        "typing-extensions": "4.16.0",
+        "urllib3": "2.8.0"
+      }
+    },
+    "difference": [
+      {
+        "package": "markupsafe",
+        "before": "3.0.4",
+        "after": "2.0.1"
+      }
+    ]
+  },
+  "baseline": {
+    "passed": false,
+    "all_commands_attempted": true,
+    "exit_code": 1,
+    "command": [
+      "<WORKDIR>\\baseline\\venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "test_summary": "1 failed, 9 passed, 1 warning in 9.26s",
+    "commands": [
+      {
+        "command": [
+          "<WORKDIR>\\baseline\\venv\\Scripts\\python.exe",
+          "-m",
+          "pip",
+          "check"
+        ],
+        "display": "<WORKDIR>\\baseline\\venv\\Scripts\\python.exe -m pip check",
+        "cwd": ".",
+        "started_at": "2026-10-15T09:42:04+00:00",
+        "timeout_seconds": 900,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "No broken requirements found.\r\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 1.469,
+        "test_summary": null
+      },
+      {
+        "command": [
+          "<WORKDIR>\\baseline\\venv\\Scripts\\python.exe",
+          "-m",
+          "pytest",
+          "-q"
+        ],
+        "display": "<WORKDIR>\\baseline\\venv\\Scripts\\python.exe -m pytest -q",
+        "cwd": ".",
+        "started_at": "2026-10-15T09:42:05+00:00",
+        "timeout_seconds": 900,
+        "shell": false,
+        "status": "failed",
+        "exit_code": 1,
+        "passed": false,
+        "timed_out": false,
+        "stdout": ".........F                                                               [100%]\r\n================================== FAILURES ===================================\r\n________________________ test_report_renders_all_sites ________________________\r\n\r\ntmp_path = WindowsPath('C:/Users/<user>/AppData/Local/Temp/pytest-of-<user>/pytest-21/test_report_renders_all_sites0')\r\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000020187B88980>\r\n\r\n    def test_report_renders_all_sites(tmp_path, monkeypatch):\r\n        monkeypatch.setenv(\"LINKWATCH_CACHE_DIR\", str(tmp_path))\r\n        cache.save_results(RESULTS)\r\n        output = tmp_path / \"status.html\"\r\n>       result = CliRunner().invoke(cli, [\"report\", \"-o\", str(output)], catch_exceptions=False)\r\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n\r\ntests\\test_report.py:20: \r\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\click\\testing.py:687: in invoke\r\n    return_value = cli.main(args=args or (), prog_name=prog_name, **extra)\r\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\click\\core.py:1552: in main\r\n    rv = self.invoke(ctx)\r\n         ^^^^^^^^^^^^^^^^\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\click\\core.py:2032: in invoke\r\n    return _process_result(sub_ctx.command.invoke(sub_ctx))\r\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\click\\core.py:1415: in invoke\r\n    return ctx.invoke(self.callback, **ctx.params)\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\click\\core.py:910: in invoke\r\n    return callback(*args, **kwargs)\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\r\nlinkwatch\\cli.py:56: in report\r\n    from .report import render_report\r\nlinkwatch\\report.py:3: in <module>\r\n    from jinja2 import Environment, FileSystemLoader, select_autoescape\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\jinja2\\__init__.py:12: in <module>\r\n    from .environment import Environment\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\jinja2\\environment.py:25: in <module>\r\n    from .defaults import BLOCK_END_STRING\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\jinja2\\defaults.py:3: in <module>\r\n    from .filters import FILTERS as DEFAULT_FILTERS  # noqa: F401\r\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\r\n\r\n    # -*- coding: utf-8 -*-\r\n    \"\"\"Built-in template filters used with the ``|`` operator.\"\"\"\r\n    import math\r\n    import random\r\n    import re\r\n    import warnings\r\n    from collections import namedtuple\r\n    from itertools import chain\r\n    from itertools import groupby\r\n    \r\n    from markupsafe import escape\r\n    from markupsafe import Markup\r\n>   from markupsafe import soft_unicode\r\nE   ImportError: cannot import name 'soft_unicode' from 'markupsafe' (<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\markupsafe\\__init__.py)\r\n\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\jinja2\\filters.py:13: ImportError\r\n============================== warnings summary ===============================\r\nlinkwatch\\resources.py:1\r\n  <WORKDIR>\\baseline\\project\\linkwatch\\resources.py:1: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\r\n    import pkg_resources\r\n\r\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\r\n=========================== short test summary info ===========================\r\nFAILED tests/test_report.py::test_report_renders_all_sites - ImportError: can...\r\n1 failed, 9 passed, 1 warning in 9.26s\r\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 11.078,
+        "test_summary": "1 failed, 9 passed, 1 warning in 9.26s"
+      }
+    ],
+    "setup": [
+      {
+        "command": [
+          "<WORKDIR>\\baseline\\venv\\Scripts\\python.exe",
+          "-m",
+          "pip",
+          "install",
+          "-r",
+          "requirements.txt",
+          "-r",
+          "requirements-dev.txt"
+        ],
+        "display": "<WORKDIR>\\baseline\\venv\\Scripts\\python.exe -m pip install -r requirements.txt -r requirements-dev.txt",
+        "cwd": ".",
+        "started_at": "2026-10-15T09:41:07+00:00",
+        "timeout_seconds": 900,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "Collecting toml==0.10.2 (from -r requirements.txt (line 1))\r\n  Obtaining dependency information for toml==0.10.2 from https://files.pythonhosted.org/packages/44/6f/7120676b6d73228c96e17f1f794d8ab046fc910d781c8d151120c3f1569e/toml-0.10.2-py2.py3-none-any.whl.metadata\r\n  Downloading toml-0.10.2-py2.py3-none-any.whl.metadata (7.1 kB)\r\nCollecting appdirs==1.4.4 (from -r requirements.txt (line 2))\r\n  Obtaining dependency information for appdirs==1.4.4 from https://files.pythonhosted.org/packages/3b/00/2344469e2084fb287c2e0b57b72910309874c3245463acd6cf5e3db69324/appdirs-1.4.4-py2.py3-none-any.whl.metadata\r\n  Downloading appdirs-1.4.4-py2.py3-none-any.whl.metadata (9.0 kB)\r\nCollecting requests==2.31.0 (from -r requirements.txt (line 3))\r\n  Obtaining dependency information for requests==2.31.0 from https://files.pythonhosted.org/packages/70/8e/0e2d847013cb52cd35b38c009bb167a1a26b2ce6cd6965bf26b47bc0bf44/requests-2.31.0-py3-none-any.whl.metadata\r\n  Downloading requests-2.31.0-py3-none-any.whl.metadata (4.6 kB)\r\nCollecting Jinja2==2.11.3 (from -r requirements.txt (line 4))\r\n  Obtaining dependency information for Jinja2==2.11.3 from https://files.pythonhosted.org/packages/7e/c2/1eece8c95ddbc9b1aeb64f5783a9e07a286de42191b7204d67b7496ddf35/Jinja2-2.11.3-py2.py3-none-any.whl.metadata\r\n  Using cached Jinja2-2.11.3-py2.py3-none-any.whl.metadata (3.5 kB)\r\nCollecting pydantic==1.10.13 (from -r requirements.txt (line 5))\r\n  Obtaining dependency information for pydantic==1.10.13 from https://files.pythonhosted.org/packages/39/9f/ab6d19c5d3fccc1e3e0d835ac773031388802b31d93937daf878465c2ecf/pydantic-1.10.13-py3-none-any.whl.metadata\r\n  Downloading pydantic-1.10.13-py3-none-any.whl.metadata (149 kB)\r\n     -------------------------------------- 149.6/149.6 kB 3.0 MB/s eta 0:00:00\r\nCollecting click>=7 (from -r requirements.txt (line 6))\r\n  Obtaining dependency information for click>=7 from https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl.metadata\r\n  Using cached click-8.5.0-py3-none-any.whl.metadata (2.6 kB)\r\nCollecting six (from -r requirements.txt (line 7))\r\n  Obtaining dependency information for six from https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl.metadata\r\n  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)\r\nCollecting chardet==5.2.0 (from -r requirements.txt (line 8))\r\n  Obtaining dependency information for chardet==5.2.0 from https://files.pythonhosted.org/packages/38/6f/f5fbc992a329ee4e0f288c1fe0e2ad9485ed064cac731ed2fe47dcc38cbf/chardet-5.2.0-py3-none-any.whl.metadata\r\n  Downloading chardet-5.2.0-py3-none-any.whl.metadata (3.4 kB)\r\nCollecting setuptools==75.8.0 (from -r requirements.txt (line 9))\r\n  Obtaining dependency information for setuptools==75.8.0 from https://files.pythonhosted.org/packages/69/8a/b9dc7678803429e4a3bc9ba462fa3dd9066824d3c607490235c6a796be5a/setuptools-75.8.0-py3-none-any.whl.metadata\r\n  Downloading setuptools-75.8.0-py3-none-any.whl.metadata (6.7 kB)\r\nCollecting idna==2.7 (from -r requirements.txt (line 10))\r\n  Obtaining dependency information for idna==2.7 from https://files.pythonhosted.org/packages/4b/2a/0276479a4b3caeb8a8c1af2f8e4355746a97fab05a372e4a2c6a6b876165/idna-2.7-py2.py3-none-any.whl.metadata\r\n  Downloading idna-2.7-py2.py3-none-any.whl.metadata (8.9 kB)\r\nCollecting python-dateutil (from -r requirements.txt (line 11))\r\n  Obtaining dependency information for python-dateutil from https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata\r\n  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)\r\nCollecting rich (from -r requirements.txt (line 12))\r\n  Obtaining dependency information for rich from https://files.pythonhosted.org/packages/82/3b/64d4899d73f91ba49a8c18a8ff3f0ea8f1c1d75481760df8c68ef5235bf5/rich-15.0.0-py3-none-any.whl.metadata\r\n  Using cached rich-15.0.0-py3-none-any.whl.metadata (18 kB)\r\nCollecting pytest (from -r requirements-dev.txt (line 1))\r\n  Obtaining dependency information for pytest from https://files.pythonhosted.org/packages/24/25/1de2678b631f5a49215c6c96fff41ba892b0a34df68d6d80292b1b48aa7f/pytest-9.1.1-py3-none-any.whl.metadata\r\n  Using cached pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)\r\nCollecting nose==1.3.7 (from -r requirements-dev.txt (line 2))\r\n  Obtaining dependency information for nose==1.3.7 from https://files.pythonhosted.org/packages/15/d8/dd071918c040f50fa1cf80da16423af51ff8ce4a0f2399b7bf8de45ac3d9/nose-1.3.7-py3-none-any.whl.metadata\r\n  Downloading nose-1.3.7-py3-none-any.whl.metadata (1.7 kB)\r\nCollecting charset-normalizer<4,>=2 (from requests==2.31.0->-r requirements.txt (line 3))\r\n  Obtaining dependency information for charset-normalizer<4,>=2 from https://files.pythonhosted.org/packages/eb/e6/e6e083884cbcfd49c64865af05027fe7011be7b2d9179524f099a1b611f3/charset_normalizer-3.5.2-cp312-cp312-win_amd64.whl.metadata\r\n  Using cached charset_normalizer-3.5.2-cp312-cp312-win_amd64.whl.metadata (47 kB)\r\nCollecting urllib3<3,>=1.21.1 (from requests==2.31.0->-r requirements.txt (line 3))\r\n  Obtaining dependency information for urllib3<3,>=1.21.1 from https://files.pythonhosted.org/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl.metadata\r\n  Using cached urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)\r\nCollecting certifi>=2017.4.17 (from requests==2.31.0->-r requirements.txt (line 3))\r\n  Obtaining dependency information for certifi>=2017.4.17 from https://files.pythonhosted.org/packages/0b/a7/71ac2cff56fec219ed242bb11b8efb69fcc4bec75db06fb7bfe35de520e6/certifi-2026.7.22-py3-none-any.whl.metadata\r\n  Using cached certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)\r\nCollecting MarkupSafe>=0.23 (from Jinja2==2.11.3->-r requirements.txt (line 4))\r\n  Obtaining dependency information for MarkupSafe>=0.23 from https://files.pythonhosted.org/packages/3f/bf/62495e180b7000aaf30000fff849e933f74264638057176cf46852500adc/markupsafe-3.0.4-cp312-cp312-win_amd64.whl.metadata\r\n  Using cached markupsafe-3.0.4-cp312-cp312-win_amd64.whl.metadata (2.8 kB)\r\nCollecting typing-extensions>=4.2.0 (from pydantic==1.10.13->-r requirements.txt (line 5))\r\n  Obtaining dependency information for typing-extensions>=4.2.0 from https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl.metadata\r\n  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)\r\nCollecting markdown-it-py>=2.2.0 (from rich->-r requirements.txt (line 12))\r\n  Obtaining dependency information for markdown-it-py>=2.2.0 from https://files.pythonhosted.org/packages/b3/81/4da04ced5a082363ecfa159c010d200ecbd959ae410c10c0264a38cac0f5/markdown_it_py-4.2.0-py3-none-any.whl.metadata\r\n  Using cached markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)\r\nCollecting pygments<3.0.0,>=2.13.0 (from rich->-r requirements.txt (line 12))\r\n  Obtaining dependency information for pygments<3.0.0,>=2.13.0 from https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl.metadata\r\n  Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)\r\nCollecting colorama>=0.4 (from pytest->-r requirements-dev.txt (line 1))\r\n  Obtaining dependency information for colorama>=0.4 from https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl.metadata\r\n  Using cached colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)\r\nCollecting iniconfig>=1.0.1 (from pytest->-r requirements-dev.txt (line 1))\r\n  Obtaining dependency information for iniconfig>=1.0.1 from https://files.pythonhosted.org/packages/56/43/4ca9e49d27a1fcf6bece6f6aec0ea46bb9112489b93d4b688fb415457bdb/iniconfig-2.3.1-py3-none-any.whl.metadata\r\n  Using cached iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)\r\nCollecting packaging>=22 (from pytest->-r requirements-dev.txt (line 1))\r\n  Obtaining dependency information for packaging>=22 from https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl.metadata\r\n  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)\r\nCollecting pluggy<2,>=1.5 (from pytest->-r requirements-dev.txt (line 1))\r\n  Obtaining dependency information for pluggy<2,>=1.5 from https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl.metadata\r\n  Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)\r\nCollecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->-r requirements.txt (line 12))\r\n  Obtaining dependency information for mdurl~=0.1 from https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl.metadata\r\n  Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)\r\nDownloading toml-0.10.2-py2.py3-none-any.whl (16 kB)\r\nDownloading appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)\r\nDownloading requests-2.31.0-py3-none-any.whl (62 kB)\r\n   ---------------------------------------- 62.6/62.6 kB 3.5 MB/s eta 0:00:00\r\nUsing cached Jinja2-2.11.3-py2.py3-none-any.whl (125 kB)\r\nDownloading pydantic-1.10.13-py3-none-any.whl (158 kB)\r\n   ---------------------------------------- 158.6/158.6 kB 9.9 MB/s eta 0:00:00\r\nDownloading chardet-5.2.0-py3-none-any.whl (199 kB)\r\n   --------------------------------------- 199.4/199.4 kB 12.6 MB/s eta 0:00:00\r\nDownloading setuptools-75.8.0-py3-none-any.whl (1.2 MB)\r\n   ---------------------------------------- 1.2/1.2 MB 19.3 MB/s eta 0:00:00\r\nDownloading idna-2.7-py2.py3-none-any.whl (58 kB)\r\n   ---------------------------------------- 58.2/58.2 kB 3.2 MB/s eta 0:00:00\r\nDownloading nose-1.3.7-py3-none-any.whl (154 kB)\r\n   ---------------------------------------- 154.7/154.7 kB 9.6 MB/s eta 0:00:00\r\nUsing cached click-8.5.0-py3-none-any.whl (125 kB)\r\nUsing cached six-1.17.0-py2.py3-none-any.whl (11 kB)\r\nUsing cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)\r\nUsing cached rich-15.0.0-py3-none-any.whl (310 kB)\r\nUsing cached pytest-9.1.1-py3-none-any.whl (386 kB)\r\nUsing cached certifi-2026.7.22-py3-none-any.whl (136 kB)\r\nUsing cached charset_normalizer-3.5.2-cp312-cp312-win_amd64.whl (207 kB)\r\nUsing cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)\r\nUsing cached iniconfig-2.3.1-py3-none-any.whl (7.6 kB)\r\nUsing cached markdown_it_py-4.2.0-py3-none-any.whl (91 kB)\r\nUsing cached markupsafe-3.0.4-cp312-cp312-win_amd64.whl (14 kB)\r\nUsing cached packaging-26.3-py3-none-any.whl (129 kB)\r\nUsing cached pluggy-1.6.0-py3-none-any.whl (20 kB)\r\nUsing cached pygments-2.21.0-py3-none-any.whl (1.3 MB)\r\nUsing cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)\r\nUsing cached urllib3-2.8.0-py3-none-any.whl (135 kB)\r\nUsing cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)\r\nInstalling collected packages: nose, idna, appdirs, urllib3, typing-extensions, toml, six, setuptools, pygments, pluggy, packaging, mdurl, MarkupSafe, iniconfig, colorama, click, charset-normalizer, chardet, certifi, requests, python-dateutil, pytest, pydantic, markdown-it-py, Jinja2, rich\r\nSuccessfully installed Jinja2-2.11.3 MarkupSafe-3.0.4 appdirs-1.4.4 certifi-2026.7.22 chardet-5.2.0 charset-normalizer-3.5.2 click-8.5.0 colorama-0.4.6 idna-2.7 iniconfig-2.3.1 markdown-it-py-4.2.0 mdurl-0.1.2 nose-1.3.7 packaging-26.3 pluggy-1.6.0 pydantic-1.10.13 pygments-2.21.0 pytest-9.1.1 python-dateutil-2.9.0.post0 requests-2.31.0 rich-15.0.0 setuptools-75.8.0 six-1.17.0 toml-0.10.2 typing-extensions-4.16.0 urllib3-2.8.0\r\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 53.641,
+        "test_summary": null
+      }
+    ]
+  },
+  "after": {
+    "passed": true,
+    "all_commands_attempted": true,
+    "exit_code": 0,
+    "command": [
+      "<WORKDIR>\\after\\venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "test_summary": "10 passed, 1 warning in 8.73s",
+    "commands": [
+      {
+        "command": [
+          "<WORKDIR>\\after\\venv\\Scripts\\python.exe",
+          "-m",
+          "pip",
+          "check"
+        ],
+        "display": "<WORKDIR>\\after\\venv\\Scripts\\python.exe -m pip check",
+        "cwd": ".",
+        "started_at": "2026-10-15T09:43:33+00:00",
+        "timeout_seconds": 900,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "No broken requirements found.\r\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 1.562,
+        "test_summary": null
+      },
+      {
+        "command": [
+          "<WORKDIR>\\after\\venv\\Scripts\\python.exe",
+          "-m",
+          "pytest",
+          "-q"
+        ],
+        "display": "<WORKDIR>\\after\\venv\\Scripts\\python.exe -m pytest -q",
+        "cwd": ".",
+        "started_at": "2026-10-15T09:43:35+00:00",
+        "timeout_seconds": 900,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "..........                                                               [100%]\r\n============================== warnings summary ===============================\r\nlinkwatch\\resources.py:1\r\n  <WORKDIR>\\after\\project\\linkwatch\\resources.py:1: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\r\n    import pkg_resources\r\n\r\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\r\n10 passed, 1 warning in 8.73s\r\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 10.531,
+        "test_summary": "10 passed, 1 warning in 8.73s"
+      }
+    ],
+    "setup": [
+      {
+        "command": [
+          "<WORKDIR>\\after\\venv\\Scripts\\python.exe",
+          "-m",
+          "pip",
+          "install",
+          "-r",
+          "requirements.txt",
+          "-r",
+          "requirements-dev.txt"
+        ],
+        "display": "<WORKDIR>\\after\\venv\\Scripts\\python.exe -m pip install -r requirements.txt -r requirements-dev.txt",
+        "cwd": ".",
+        "started_at": "2026-10-15T09:42:39+00:00",
+        "timeout_seconds": 900,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "Collecting toml==0.10.2 (from -r requirements.txt (line 1))\r\n  Obtaining dependency information for toml==0.10.2 from https://files.pythonhosted.org/packages/44/6f/7120676b6d73228c96e17f1f794d8ab046fc910d781c8d151120c3f1569e/toml-0.10.2-py2.py3-none-any.whl.metadata\r\n  Using cached toml-0.10.2-py2.py3-none-any.whl.metadata (7.1 kB)\r\nCollecting appdirs==1.4.4 (from -r requirements.txt (line 2))\r\n  Obtaining dependency information for appdirs==1.4.4 from https://files.pythonhosted.org/packages/3b/00/2344469e2084fb287c2e0b57b72910309874c3245463acd6cf5e3db69324/appdirs-1.4.4-py2.py3-none-any.whl.metadata\r\n  Using cached appdirs-1.4.4-py2.py3-none-any.whl.metadata (9.0 kB)\r\nCollecting requests==2.31.0 (from -r requirements.txt (line 3))\r\n  Obtaining dependency information for requests==2.31.0 from https://files.pythonhosted.org/packages/70/8e/0e2d847013cb52cd35b38c009bb167a1a26b2ce6cd6965bf26b47bc0bf44/requests-2.31.0-py3-none-any.whl.metadata\r\n  Using cached requests-2.31.0-py3-none-any.whl.metadata (4.6 kB)\r\nCollecting Jinja2==2.11.3 (from -r requirements.txt (line 4))\r\n  Obtaining dependency information for Jinja2==2.11.3 from https://files.pythonhosted.org/packages/7e/c2/1eece8c95ddbc9b1aeb64f5783a9e07a286de42191b7204d67b7496ddf35/Jinja2-2.11.3-py2.py3-none-any.whl.metadata\r\n  Using cached Jinja2-2.11.3-py2.py3-none-any.whl.metadata (3.5 kB)\r\nCollecting pydantic==1.10.13 (from -r requirements.txt (line 5))\r\n  Obtaining dependency information for pydantic==1.10.13 from https://files.pythonhosted.org/packages/39/9f/ab6d19c5d3fccc1e3e0d835ac773031388802b31d93937daf878465c2ecf/pydantic-1.10.13-py3-none-any.whl.metadata\r\n  Using cached pydantic-1.10.13-py3-none-any.whl.metadata (149 kB)\r\nCollecting click>=7 (from -r requirements.txt (line 6))\r\n  Obtaining dependency information for click>=7 from https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl.metadata\r\n  Using cached click-8.5.0-py3-none-any.whl.metadata (2.6 kB)\r\nCollecting six (from -r requirements.txt (line 7))\r\n  Obtaining dependency information for six from https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl.metadata\r\n  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)\r\nCollecting chardet==5.2.0 (from -r requirements.txt (line 8))\r\n  Obtaining dependency information for chardet==5.2.0 from https://files.pythonhosted.org/packages/38/6f/f5fbc992a329ee4e0f288c1fe0e2ad9485ed064cac731ed2fe47dcc38cbf/chardet-5.2.0-py3-none-any.whl.metadata\r\n  Using cached chardet-5.2.0-py3-none-any.whl.metadata (3.4 kB)\r\nCollecting setuptools==75.8.0 (from -r requirements.txt (line 9))\r\n  Obtaining dependency information for setuptools==75.8.0 from https://files.pythonhosted.org/packages/69/8a/b9dc7678803429e4a3bc9ba462fa3dd9066824d3c607490235c6a796be5a/setuptools-75.8.0-py3-none-any.whl.metadata\r\n  Using cached setuptools-75.8.0-py3-none-any.whl.metadata (6.7 kB)\r\nCollecting idna==2.7 (from -r requirements.txt (line 10))\r\n  Obtaining dependency information for idna==2.7 from https://files.pythonhosted.org/packages/4b/2a/0276479a4b3caeb8a8c1af2f8e4355746a97fab05a372e4a2c6a6b876165/idna-2.7-py2.py3-none-any.whl.metadata\r\n  Using cached idna-2.7-py2.py3-none-any.whl.metadata (8.9 kB)\r\nCollecting python-dateutil (from -r requirements.txt (line 11))\r\n  Obtaining dependency information for python-dateutil from https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata\r\n  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)\r\nCollecting rich (from -r requirements.txt (line 12))\r\n  Obtaining dependency information for rich from https://files.pythonhosted.org/packages/82/3b/64d4899d73f91ba49a8c18a8ff3f0ea8f1c1d75481760df8c68ef5235bf5/rich-15.0.0-py3-none-any.whl.metadata\r\n  Using cached rich-15.0.0-py3-none-any.whl.metadata (18 kB)\r\nCollecting pytest (from -r requirements-dev.txt (line 1))\r\n  Obtaining dependency information for pytest from https://files.pythonhosted.org/packages/24/25/1de2678b631f5a49215c6c96fff41ba892b0a34df68d6d80292b1b48aa7f/pytest-9.1.1-py3-none-any.whl.metadata\r\n  Using cached pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)\r\nCollecting nose==1.3.7 (from -r requirements-dev.txt (line 2))\r\n  Obtaining dependency information for nose==1.3.7 from https://files.pythonhosted.org/packages/15/d8/dd071918c040f50fa1cf80da16423af51ff8ce4a0f2399b7bf8de45ac3d9/nose-1.3.7-py3-none-any.whl.metadata\r\n  Using cached nose-1.3.7-py3-none-any.whl.metadata (1.7 kB)\r\nCollecting charset-normalizer<4,>=2 (from requests==2.31.0->-r requirements.txt (line 3))\r\n  Obtaining dependency information for charset-normalizer<4,>=2 from https://files.pythonhosted.org/packages/eb/e6/e6e083884cbcfd49c64865af05027fe7011be7b2d9179524f099a1b611f3/charset_normalizer-3.5.2-cp312-cp312-win_amd64.whl.metadata\r\n  Using cached charset_normalizer-3.5.2-cp312-cp312-win_amd64.whl.metadata (47 kB)\r\nCollecting urllib3<3,>=1.21.1 (from requests==2.31.0->-r requirements.txt (line 3))\r\n  Obtaining dependency information for urllib3<3,>=1.21.1 from https://files.pythonhosted.org/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl.metadata\r\n  Using cached urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)\r\nCollecting certifi>=2017.4.17 (from requests==2.31.0->-r requirements.txt (line 3))\r\n  Obtaining dependency information for certifi>=2017.4.17 from https://files.pythonhosted.org/packages/0b/a7/71ac2cff56fec219ed242bb11b8efb69fcc4bec75db06fb7bfe35de520e6/certifi-2026.7.22-py3-none-any.whl.metadata\r\n  Using cached certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)\r\nCollecting MarkupSafe>=0.23 (from Jinja2==2.11.3->-r requirements.txt (line 4))\r\n  Obtaining dependency information for MarkupSafe>=0.23 from https://files.pythonhosted.org/packages/3f/bf/62495e180b7000aaf30000fff849e933f74264638057176cf46852500adc/markupsafe-3.0.4-cp312-cp312-win_amd64.whl.metadata\r\n  Using cached markupsafe-3.0.4-cp312-cp312-win_amd64.whl.metadata (2.8 kB)\r\nCollecting typing-extensions>=4.2.0 (from pydantic==1.10.13->-r requirements.txt (line 5))\r\n  Obtaining dependency information for typing-extensions>=4.2.0 from https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl.metadata\r\n  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)\r\nCollecting markdown-it-py>=2.2.0 (from rich->-r requirements.txt (line 12))\r\n  Obtaining dependency information for markdown-it-py>=2.2.0 from https://files.pythonhosted.org/packages/b3/81/4da04ced5a082363ecfa159c010d200ecbd959ae410c10c0264a38cac0f5/markdown_it_py-4.2.0-py3-none-any.whl.metadata\r\n  Using cached markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)\r\nCollecting pygments<3.0.0,>=2.13.0 (from rich->-r requirements.txt (line 12))\r\n  Obtaining dependency information for pygments<3.0.0,>=2.13.0 from https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl.metadata\r\n  Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)\r\nCollecting colorama>=0.4 (from pytest->-r requirements-dev.txt (line 1))\r\n  Obtaining dependency information for colorama>=0.4 from https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl.metadata\r\n  Using cached colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)\r\nCollecting iniconfig>=1.0.1 (from pytest->-r requirements-dev.txt (line 1))\r\n  Obtaining dependency information for iniconfig>=1.0.1 from https://files.pythonhosted.org/packages/56/43/4ca9e49d27a1fcf6bece6f6aec0ea46bb9112489b93d4b688fb415457bdb/iniconfig-2.3.1-py3-none-any.whl.metadata\r\n  Using cached iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)\r\nCollecting packaging>=22 (from pytest->-r requirements-dev.txt (line 1))\r\n  Obtaining dependency information for packaging>=22 from https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl.metadata\r\n  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)\r\nCollecting pluggy<2,>=1.5 (from pytest->-r requirements-dev.txt (line 1))\r\n  Obtaining dependency information for pluggy<2,>=1.5 from https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl.metadata\r\n  Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)\r\nCollecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->-r requirements.txt (line 12))\r\n  Obtaining dependency information for mdurl~=0.1 from https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl.metadata\r\n  Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)\r\nUsing cached toml-0.10.2-py2.py3-none-any.whl (16 kB)\r\nUsing cached appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)\r\nUsing cached requests-2.31.0-py3-none-any.whl (62 kB)\r\nUsing cached Jinja2-2.11.3-py2.py3-none-any.whl (125 kB)\r\nUsing cached pydantic-1.10.13-py3-none-any.whl (158 kB)\r\nUsing cached chardet-5.2.0-py3-none-any.whl (199 kB)\r\nUsing cached setuptools-75.8.0-py3-none-any.whl (1.2 MB)\r\nUsing cached idna-2.7-py2.py3-none-any.whl (58 kB)\r\nUsing cached nose-1.3.7-py3-none-any.whl (154 kB)\r\nUsing cached click-8.5.0-py3-none-any.whl (125 kB)\r\nUsing cached six-1.17.0-py2.py3-none-any.whl (11 kB)\r\nUsing cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)\r\nUsing cached rich-15.0.0-py3-none-any.whl (310 kB)\r\nUsing cached pytest-9.1.1-py3-none-any.whl (386 kB)\r\nUsing cached certifi-2026.7.22-py3-none-any.whl (136 kB)\r\nUsing cached charset_normalizer-3.5.2-cp312-cp312-win_amd64.whl (207 kB)\r\nUsing cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)\r\nUsing cached iniconfig-2.3.1-py3-none-any.whl (7.6 kB)\r\nUsing cached markdown_it_py-4.2.0-py3-none-any.whl (91 kB)\r\nUsing cached markupsafe-3.0.4-cp312-cp312-win_amd64.whl (14 kB)\r\nUsing cached packaging-26.3-py3-none-any.whl (129 kB)\r\nUsing cached pluggy-1.6.0-py3-none-any.whl (20 kB)\r\nUsing cached pygments-2.21.0-py3-none-any.whl (1.3 MB)\r\nUsing cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)\r\nUsing cached urllib3-2.8.0-py3-none-any.whl (135 kB)\r\nUsing cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)\r\nInstalling collected packages: nose, idna, appdirs, urllib3, typing-extensions, toml, six, setuptools, pygments, pluggy, packaging, mdurl, MarkupSafe, iniconfig, colorama, click, charset-normalizer, chardet, certifi, requests, python-dateutil, pytest, pydantic, markdown-it-py, Jinja2, rich\r\nSuccessfully installed Jinja2-2.11.3 MarkupSafe-3.0.4 appdirs-1.4.4 certifi-2026.7.22 chardet-5.2.0 charset-normalizer-3.5.2 click-8.5.0 colorama-0.4.6 idna-2.7 iniconfig-2.3.1 markdown-it-py-4.2.0 mdurl-0.1.2 nose-1.3.7 packaging-26.3 pluggy-1.6.0 pydantic-1.10.13 pygments-2.21.0 pytest-9.1.1 python-dateutil-2.9.0.post0 requests-2.31.0 rich-15.0.0 setuptools-75.8.0 six-1.17.0 toml-0.10.2 typing-extensions-4.16.0 urllib3-2.8.0\r\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 50.015,
+        "test_summary": null
+      },
+      {
+        "command": [
+          "<WORKDIR>\\after\\venv\\Scripts\\python.exe",
+          "-m",
+          "pip",
+          "install",
+          "MarkupSafe==2.0.1"
+        ],
+        "display": "<WORKDIR>\\after\\venv\\Scripts\\python.exe -m pip install MarkupSafe==2.0.1",
+        "cwd": ".",
+        "started_at": "2026-10-15T09:43:29+00:00",
+        "timeout_seconds": 900,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "Collecting MarkupSafe==2.0.1\r\n  Using cached markupsafe-2.0.1-py3-none-any.whl\r\nInstalling collected packages: MarkupSafe\r\n  Attempting uninstall: MarkupSafe\r\n    Found existing installation: MarkupSafe 3.0.4\r\n    Uninstalling MarkupSafe-3.0.4:\r\n      Successfully uninstalled MarkupSafe-3.0.4\r\nSuccessfully installed MarkupSafe-2.0.1\r\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 2.656,
+        "test_summary": null
+      }
+    ],
+    "file_edits": []
+  },
+  "before": {
+    "passed": false,
+    "all_commands_attempted": true,
+    "exit_code": 1,
+    "command": [
+      "<WORKDIR>\\baseline\\venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "-q"
+    ],
+    "test_summary": "1 failed, 9 passed, 1 warning in 9.26s",
+    "commands": [
+      {
+        "command": [
+          "<WORKDIR>\\baseline\\venv\\Scripts\\python.exe",
+          "-m",
+          "pip",
+          "check"
+        ],
+        "display": "<WORKDIR>\\baseline\\venv\\Scripts\\python.exe -m pip check",
+        "cwd": ".",
+        "started_at": "2026-10-15T09:42:04+00:00",
+        "timeout_seconds": 900,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "No broken requirements found.\r\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 1.469,
+        "test_summary": null
+      },
+      {
+        "command": [
+          "<WORKDIR>\\baseline\\venv\\Scripts\\python.exe",
+          "-m",
+          "pytest",
+          "-q"
+        ],
+        "display": "<WORKDIR>\\baseline\\venv\\Scripts\\python.exe -m pytest -q",
+        "cwd": ".",
+        "started_at": "2026-10-15T09:42:05+00:00",
+        "timeout_seconds": 900,
+        "shell": false,
+        "status": "failed",
+        "exit_code": 1,
+        "passed": false,
+        "timed_out": false,
+        "stdout": ".........F                                                               [100%]\r\n================================== FAILURES ===================================\r\n________________________ test_report_renders_all_sites ________________________\r\n\r\ntmp_path = WindowsPath('C:/Users/<user>/AppData/Local/Temp/pytest-of-<user>/pytest-21/test_report_renders_all_sites0')\r\nmonkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000020187B88980>\r\n\r\n    def test_report_renders_all_sites(tmp_path, monkeypatch):\r\n        monkeypatch.setenv(\"LINKWATCH_CACHE_DIR\", str(tmp_path))\r\n        cache.save_results(RESULTS)\r\n        output = tmp_path / \"status.html\"\r\n>       result = CliRunner().invoke(cli, [\"report\", \"-o\", str(output)], catch_exceptions=False)\r\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n\r\ntests\\test_report.py:20: \r\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\click\\testing.py:687: in invoke\r\n    return_value = cli.main(args=args or (), prog_name=prog_name, **extra)\r\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\click\\core.py:1552: in main\r\n    rv = self.invoke(ctx)\r\n         ^^^^^^^^^^^^^^^^\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\click\\core.py:2032: in invoke\r\n    return _process_result(sub_ctx.command.invoke(sub_ctx))\r\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\click\\core.py:1415: in invoke\r\n    return ctx.invoke(self.callback, **ctx.params)\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\click\\core.py:910: in invoke\r\n    return callback(*args, **kwargs)\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\r\nlinkwatch\\cli.py:56: in report\r\n    from .report import render_report\r\nlinkwatch\\report.py:3: in <module>\r\n    from jinja2 import Environment, FileSystemLoader, select_autoescape\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\jinja2\\__init__.py:12: in <module>\r\n    from .environment import Environment\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\jinja2\\environment.py:25: in <module>\r\n    from .defaults import BLOCK_END_STRING\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\jinja2\\defaults.py:3: in <module>\r\n    from .filters import FILTERS as DEFAULT_FILTERS  # noqa: F401\r\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\r\n\r\n    # -*- coding: utf-8 -*-\r\n    \"\"\"Built-in template filters used with the ``|`` operator.\"\"\"\r\n    import math\r\n    import random\r\n    import re\r\n    import warnings\r\n    from collections import namedtuple\r\n    from itertools import chain\r\n    from itertools import groupby\r\n    \r\n    from markupsafe import escape\r\n    from markupsafe import Markup\r\n>   from markupsafe import soft_unicode\r\nE   ImportError: cannot import name 'soft_unicode' from 'markupsafe' (<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\markupsafe\\__init__.py)\r\n\r\n<WORKDIR>\\baseline\\venv\\Lib\\site-packages\\jinja2\\filters.py:13: ImportError\r\n============================== warnings summary ===============================\r\nlinkwatch\\resources.py:1\r\n  <WORKDIR>\\baseline\\project\\linkwatch\\resources.py:1: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html\r\n    import pkg_resources\r\n\r\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\r\n=========================== short test summary info ===========================\r\nFAILED tests/test_report.py::test_report_renders_all_sites - ImportError: can...\r\n1 failed, 9 passed, 1 warning in 9.26s\r\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 11.078,
+        "test_summary": "1 failed, 9 passed, 1 warning in 9.26s"
+      }
+    ],
+    "setup": [
+      {
+        "command": [
+          "<WORKDIR>\\baseline\\venv\\Scripts\\python.exe",
+          "-m",
+          "pip",
+          "install",
+          "-r",
+          "requirements.txt",
+          "-r",
+          "requirements-dev.txt"
+        ],
+        "display": "<WORKDIR>\\baseline\\venv\\Scripts\\python.exe -m pip install -r requirements.txt -r requirements-dev.txt",
+        "cwd": ".",
+        "started_at": "2026-10-15T09:41:07+00:00",
+        "timeout_seconds": 900,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "Collecting toml==0.10.2 (from -r requirements.txt (line 1))\r\n  Obtaining dependency information for toml==0.10.2 from https://files.pythonhosted.org/packages/44/6f/7120676b6d73228c96e17f1f794d8ab046fc910d781c8d151120c3f1569e/toml-0.10.2-py2.py3-none-any.whl.metadata\r\n  Downloading toml-0.10.2-py2.py3-none-any.whl.metadata (7.1 kB)\r\nCollecting appdirs==1.4.4 (from -r requirements.txt (line 2))\r\n  Obtaining dependency information for appdirs==1.4.4 from https://files.pythonhosted.org/packages/3b/00/2344469e2084fb287c2e0b57b72910309874c3245463acd6cf5e3db69324/appdirs-1.4.4-py2.py3-none-any.whl.metadata\r\n  Downloading appdirs-1.4.4-py2.py3-none-any.whl.metadata (9.0 kB)\r\nCollecting requests==2.31.0 (from -r requirements.txt (line 3))\r\n  Obtaining dependency information for requests==2.31.0 from https://files.pythonhosted.org/packages/70/8e/0e2d847013cb52cd35b38c009bb167a1a26b2ce6cd6965bf26b47bc0bf44/requests-2.31.0-py3-none-any.whl.metadata\r\n  Downloading requests-2.31.0-py3-none-any.whl.metadata (4.6 kB)\r\nCollecting Jinja2==2.11.3 (from -r requirements.txt (line 4))\r\n  Obtaining dependency information for Jinja2==2.11.3 from https://files.pythonhosted.org/packages/7e/c2/1eece8c95ddbc9b1aeb64f5783a9e07a286de42191b7204d67b7496ddf35/Jinja2-2.11.3-py2.py3-none-any.whl.metadata\r\n  Using cached Jinja2-2.11.3-py2.py3-none-any.whl.metadata (3.5 kB)\r\nCollecting pydantic==1.10.13 (from -r requirements.txt (line 5))\r\n  Obtaining dependency information for pydantic==1.10.13 from https://files.pythonhosted.org/packages/39/9f/ab6d19c5d3fccc1e3e0d835ac773031388802b31d93937daf878465c2ecf/pydantic-1.10.13-py3-none-any.whl.metadata\r\n  Downloading pydantic-1.10.13-py3-none-any.whl.metadata (149 kB)\r\n     -------------------------------------- 149.6/149.6 kB 3.0 MB/s eta 0:00:00\r\nCollecting click>=7 (from -r requirements.txt (line 6))\r\n  Obtaining dependency information for click>=7 from https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl.metadata\r\n  Using cached click-8.5.0-py3-none-any.whl.metadata (2.6 kB)\r\nCollecting six (from -r requirements.txt (line 7))\r\n  Obtaining dependency information for six from https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl.metadata\r\n  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)\r\nCollecting chardet==5.2.0 (from -r requirements.txt (line 8))\r\n  Obtaining dependency information for chardet==5.2.0 from https://files.pythonhosted.org/packages/38/6f/f5fbc992a329ee4e0f288c1fe0e2ad9485ed064cac731ed2fe47dcc38cbf/chardet-5.2.0-py3-none-any.whl.metadata\r\n  Downloading chardet-5.2.0-py3-none-any.whl.metadata (3.4 kB)\r\nCollecting setuptools==75.8.0 (from -r requirements.txt (line 9))\r\n  Obtaining dependency information for setuptools==75.8.0 from https://files.pythonhosted.org/packages/69/8a/b9dc7678803429e4a3bc9ba462fa3dd9066824d3c607490235c6a796be5a/setuptools-75.8.0-py3-none-any.whl.metadata\r\n  Downloading setuptools-75.8.0-py3-none-any.whl.metadata (6.7 kB)\r\nCollecting idna==2.7 (from -r requirements.txt (line 10))\r\n  Obtaining dependency information for idna==2.7 from https://files.pythonhosted.org/packages/4b/2a/0276479a4b3caeb8a8c1af2f8e4355746a97fab05a372e4a2c6a6b876165/idna-2.7-py2.py3-none-any.whl.metadata\r\n  Downloading idna-2.7-py2.py3-none-any.whl.metadata (8.9 kB)\r\nCollecting python-dateutil (from -r requirements.txt (line 11))\r\n  Obtaining dependency information for python-dateutil from https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata\r\n  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)\r\nCollecting rich (from -r requirements.txt (line 12))\r\n  Obtaining dependency information for rich from https://files.pythonhosted.org/packages/82/3b/64d4899d73f91ba49a8c18a8ff3f0ea8f1c1d75481760df8c68ef5235bf5/rich-15.0.0-py3-none-any.whl.metadata\r\n  Using cached rich-15.0.0-py3-none-any.whl.metadata (18 kB)\r\nCollecting pytest (from -r requirements-dev.txt (line 1))\r\n  Obtaining dependency information for pytest from https://files.pythonhosted.org/packages/24/25/1de2678b631f5a49215c6c96fff41ba892b0a34df68d6d80292b1b48aa7f/pytest-9.1.1-py3-none-any.whl.metadata\r\n  Using cached pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)\r\nCollecting nose==1.3.7 (from -r requirements-dev.txt (line 2))\r\n  Obtaining dependency information for nose==1.3.7 from https://files.pythonhosted.org/packages/15/d8/dd071918c040f50fa1cf80da16423af51ff8ce4a0f2399b7bf8de45ac3d9/nose-1.3.7-py3-none-any.whl.metadata\r\n  Downloading nose-1.3.7-py3-none-any.whl.metadata (1.7 kB)\r\nCollecting charset-normalizer<4,>=2 (from requests==2.31.0->-r requirements.txt (line 3))\r\n  Obtaining dependency information for charset-normalizer<4,>=2 from https://files.pythonhosted.org/packages/eb/e6/e6e083884cbcfd49c64865af05027fe7011be7b2d9179524f099a1b611f3/charset_normalizer-3.5.2-cp312-cp312-win_amd64.whl.metadata\r\n  Using cached charset_normalizer-3.5.2-cp312-cp312-win_amd64.whl.metadata (47 kB)\r\nCollecting urllib3<3,>=1.21.1 (from requests==2.31.0->-r requirements.txt (line 3))\r\n  Obtaining dependency information for urllib3<3,>=1.21.1 from https://files.pythonhosted.org/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl.metadata\r\n  Using cached urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)\r\nCollecting certifi>=2017.4.17 (from requests==2.31.0->-r requirements.txt (line 3))\r\n  Obtaining dependency information for certifi>=2017.4.17 from https://files.pythonhosted.org/packages/0b/a7/71ac2cff56fec219ed242bb11b8efb69fcc4bec75db06fb7bfe35de520e6/certifi-2026.7.22-py3-none-any.whl.metadata\r\n  Using cached certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)\r\nCollecting MarkupSafe>=0.23 (from Jinja2==2.11.3->-r requirements.txt (line 4))\r\n  Obtaining dependency information for MarkupSafe>=0.23 from https://files.pythonhosted.org/packages/3f/bf/62495e180b7000aaf30000fff849e933f74264638057176cf46852500adc/markupsafe-3.0.4-cp312-cp312-win_amd64.whl.metadata\r\n  Using cached markupsafe-3.0.4-cp312-cp312-win_amd64.whl.metadata (2.8 kB)\r\nCollecting typing-extensions>=4.2.0 (from pydantic==1.10.13->-r requirements.txt (line 5))\r\n  Obtaining dependency information for typing-extensions>=4.2.0 from https://files.pythonhosted.org/packages/49/d3/b8441a820a491ddfc024b0b0cf0393375b75ea13866d9c66727e54c2fc80/typing_extensions-4.16.0-py3-none-any.whl.metadata\r\n  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)\r\nCollecting markdown-it-py>=2.2.0 (from rich->-r requirements.txt (line 12))\r\n  Obtaining dependency information for markdown-it-py>=2.2.0 from https://files.pythonhosted.org/packages/b3/81/4da04ced5a082363ecfa159c010d200ecbd959ae410c10c0264a38cac0f5/markdown_it_py-4.2.0-py3-none-any.whl.metadata\r\n  Using cached markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)\r\nCollecting pygments<3.0.0,>=2.13.0 (from rich->-r requirements.txt (line 12))\r\n  Obtaining dependency information for pygments<3.0.0,>=2.13.0 from https://files.pythonhosted.org/packages/71/46/17f022dd3e953bf20a04a028a21ec746d942f8d2af30fa0f124fa0e6a684/pygments-2.21.0-py3-none-any.whl.metadata\r\n  Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)\r\nCollecting colorama>=0.4 (from pytest->-r requirements-dev.txt (line 1))\r\n  Obtaining dependency information for colorama>=0.4 from https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl.metadata\r\n  Using cached colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)\r\nCollecting iniconfig>=1.0.1 (from pytest->-r requirements-dev.txt (line 1))\r\n  Obtaining dependency information for iniconfig>=1.0.1 from https://files.pythonhosted.org/packages/56/43/4ca9e49d27a1fcf6bece6f6aec0ea46bb9112489b93d4b688fb415457bdb/iniconfig-2.3.1-py3-none-any.whl.metadata\r\n  Using cached iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)\r\nCollecting packaging>=22 (from pytest->-r requirements-dev.txt (line 1))\r\n  Obtaining dependency information for packaging>=22 from https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl.metadata\r\n  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)\r\nCollecting pluggy<2,>=1.5 (from pytest->-r requirements-dev.txt (line 1))\r\n  Obtaining dependency information for pluggy<2,>=1.5 from https://files.pythonhosted.org/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl.metadata\r\n  Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)\r\nCollecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->-r requirements.txt (line 12))\r\n  Obtaining dependency information for mdurl~=0.1 from https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl.metadata\r\n  Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)\r\nDownloading toml-0.10.2-py2.py3-none-any.whl (16 kB)\r\nDownloading appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)\r\nDownloading requests-2.31.0-py3-none-any.whl (62 kB)\r\n   ---------------------------------------- 62.6/62.6 kB 3.5 MB/s eta 0:00:00\r\nUsing cached Jinja2-2.11.3-py2.py3-none-any.whl (125 kB)\r\nDownloading pydantic-1.10.13-py3-none-any.whl (158 kB)\r\n   ---------------------------------------- 158.6/158.6 kB 9.9 MB/s eta 0:00:00\r\nDownloading chardet-5.2.0-py3-none-any.whl (199 kB)\r\n   --------------------------------------- 199.4/199.4 kB 12.6 MB/s eta 0:00:00\r\nDownloading setuptools-75.8.0-py3-none-any.whl (1.2 MB)\r\n   ---------------------------------------- 1.2/1.2 MB 19.3 MB/s eta 0:00:00\r\nDownloading idna-2.7-py2.py3-none-any.whl (58 kB)\r\n   ---------------------------------------- 58.2/58.2 kB 3.2 MB/s eta 0:00:00\r\nDownloading nose-1.3.7-py3-none-any.whl (154 kB)\r\n   ---------------------------------------- 154.7/154.7 kB 9.6 MB/s eta 0:00:00\r\nUsing cached click-8.5.0-py3-none-any.whl (125 kB)\r\nUsing cached six-1.17.0-py2.py3-none-any.whl (11 kB)\r\nUsing cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)\r\nUsing cached rich-15.0.0-py3-none-any.whl (310 kB)\r\nUsing cached pytest-9.1.1-py3-none-any.whl (386 kB)\r\nUsing cached certifi-2026.7.22-py3-none-any.whl (136 kB)\r\nUsing cached charset_normalizer-3.5.2-cp312-cp312-win_amd64.whl (207 kB)\r\nUsing cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)\r\nUsing cached iniconfig-2.3.1-py3-none-any.whl (7.6 kB)\r\nUsing cached markdown_it_py-4.2.0-py3-none-any.whl (91 kB)\r\nUsing cached markupsafe-3.0.4-cp312-cp312-win_amd64.whl (14 kB)\r\nUsing cached packaging-26.3-py3-none-any.whl (129 kB)\r\nUsing cached pluggy-1.6.0-py3-none-any.whl (20 kB)\r\nUsing cached pygments-2.21.0-py3-none-any.whl (1.3 MB)\r\nUsing cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)\r\nUsing cached urllib3-2.8.0-py3-none-any.whl (135 kB)\r\nUsing cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)\r\nInstalling collected packages: nose, idna, appdirs, urllib3, typing-extensions, toml, six, setuptools, pygments, pluggy, packaging, mdurl, MarkupSafe, iniconfig, colorama, click, charset-normalizer, chardet, certifi, requests, python-dateutil, pytest, pydantic, markdown-it-py, Jinja2, rich\r\nSuccessfully installed Jinja2-2.11.3 MarkupSafe-3.0.4 appdirs-1.4.4 certifi-2026.7.22 chardet-5.2.0 charset-normalizer-3.5.2 click-8.5.0 colorama-0.4.6 idna-2.7 iniconfig-2.3.1 markdown-it-py-4.2.0 mdurl-0.1.2 nose-1.3.7 packaging-26.3 pluggy-1.6.0 pydantic-1.10.13 pygments-2.21.0 pytest-9.1.1 python-dateutil-2.9.0.post0 requests-2.31.0 rich-15.0.0 setuptools-75.8.0 six-1.17.0 toml-0.10.2 typing-extensions-4.16.0 urllib3-2.8.0\r\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 53.641,
+        "test_summary": null
+      }
+    ]
+  },
+  "test_summary": "Status VERIFIED_CHANGE. baseline: failed (1 failed, 9 passed, 1 warning in 9.26s) after: passed (10 passed, 1 warning in 8.73s) Baseline captured; declared dependency change applied with evidence; every baseline command was repeated after the change and passed.",
+  "trust_boundary": "Configured commands may execute arbitrary project code. They ran only because a verification configuration was supplied.",
+  "limitations": [
+    "Verification applies only to the exact commands, project copy and environment recorded here.",
+    "A passing command is not a dependency change; a dependency change is not a verified fix; VERIFIED_CHANGE means the declared change was applied with evidence and the recorded commands passed afterwards.",
+    "A passing verification does not establish that the change is the best long-term choice, and no security advisory data is consulted.",
+    "Network access was not restricted during setup commands."
+  ]
+}
