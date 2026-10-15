@@ -1,0 +1,370 @@
+{
+  "schema_version": "2.0",
+  "report_type": "verification",
+  "status": "VERIFIED_CHANGE",
+  "status_reasons": [
+    "Baseline captured; declared dependency change applied with evidence; every baseline command was repeated after the change and passed."
+  ],
+  "verified": true,
+  "blockers": [],
+  "target": {
+    "name": "project",
+    "path_policy": "directory name only"
+  },
+  "description": "SYNTHETIC FIXTURE (not LinkWatch): Jinja2 2.11.3 + MarkupSafe 3.0.4 import failure vs MarkupSafe 2.0.1 diagnostic change",
+  "isolation": {
+    "requested": "venv",
+    "baseline_isolated": true,
+    "after_isolated": true,
+    "working_copy_used": true,
+    "note": "Fresh virtual environment created for this phase; the host environment was not modified."
+  },
+  "environment": {
+    "python_version": "3.12.3",
+    "python_implementation": "CPython",
+    "os": "Linux",
+    "os_release": "6.18.44-fc-v114",
+    "machine": "x86_64",
+    "interpreter_kind": "venv",
+    "environment_isolated": true,
+    "isolation_note": "Fresh virtual environment created for this phase; the host environment was not modified.",
+    "interpreter_probe_ok": true
+  },
+  "environments": {
+    "baseline": {
+      "python_version": "3.12.3",
+      "python_implementation": "CPython",
+      "os": "Linux",
+      "os_release": "6.18.44-fc-v114",
+      "machine": "x86_64",
+      "interpreter_kind": "venv",
+      "environment_isolated": true,
+      "isolation_note": "Fresh virtual environment created for this phase; the host environment was not modified.",
+      "interpreter_probe_ok": true
+    },
+    "after": {
+      "python_version": "3.12.3",
+      "python_implementation": "CPython",
+      "os": "Linux",
+      "os_release": "6.18.44-fc-v114",
+      "machine": "x86_64",
+      "interpreter_kind": "venv",
+      "environment_isolated": true,
+      "isolation_note": "Fresh virtual environment created for this phase; the host environment was not modified.",
+      "interpreter_probe_ok": true
+    }
+  },
+  "change": {
+    "declared": true,
+    "pip_install": [
+      "MarkupSafe==2.0.1"
+    ],
+    "file_edits": [],
+    "applied_with_evidence": true,
+    "environment_diff": [
+      {
+        "package": "markupsafe",
+        "before": "3.0.4",
+        "after": "2.0.1"
+      }
+    ],
+    "manifest_diff": []
+  },
+  "dependency_state": {
+    "before": {
+      "captured": true,
+      "packages": {
+        "jinja2": "2.11.3",
+        "markupsafe": "3.0.4",
+        "pip": "24.0"
+      }
+    },
+    "after": {
+      "captured": true,
+      "packages": {
+        "jinja2": "2.11.3",
+        "markupsafe": "2.0.1",
+        "pip": "24.0"
+      }
+    },
+    "difference": [
+      {
+        "package": "markupsafe",
+        "before": "3.0.4",
+        "after": "2.0.1"
+      }
+    ]
+  },
+  "baseline": {
+    "passed": false,
+    "all_commands_attempted": true,
+    "exit_code": 1,
+    "command": [
+      "<WORKDIR>/baseline/venv/bin/python",
+      "check_import.py"
+    ],
+    "test_summary": null,
+    "commands": [
+      {
+        "command": [
+          "<WORKDIR>/baseline/venv/bin/python",
+          "-m",
+          "pip",
+          "check"
+        ],
+        "display": "<WORKDIR>/baseline/venv/bin/python -m pip check",
+        "cwd": ".",
+        "started_at": "2026-10-15T08:21:11+00:00",
+        "timeout_seconds": 600,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "No broken requirements found.\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 0.427,
+        "test_summary": null
+      },
+      {
+        "command": [
+          "<WORKDIR>/baseline/venv/bin/python",
+          "check_import.py"
+        ],
+        "display": "<WORKDIR>/baseline/venv/bin/python check_import.py",
+        "cwd": ".",
+        "started_at": "2026-10-15T08:21:12+00:00",
+        "timeout_seconds": 600,
+        "shell": false,
+        "status": "failed",
+        "exit_code": 1,
+        "passed": false,
+        "timed_out": false,
+        "stdout": "",
+        "stderr": "Traceback (most recent call last):\n  File \"<WORKDIR>/baseline/project/check_import.py\", line 3, in <module>\n    from app import render\n  File \"<WORKDIR>/baseline/project/app.py\", line 5, in <module>\n    from jinja2 import Template\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/__init__.py\", line 12, in <module>\n    from .environment import Environment\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/environment.py\", line 25, in <module>\n    from .defaults import BLOCK_END_STRING\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/defaults.py\", line 3, in <module>\n    from .filters import FILTERS as DEFAULT_FILTERS  # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/filters.py\", line 13, in <module>\n    from markupsafe import soft_unicode\nImportError: cannot import name 'soft_unicode' from 'markupsafe' (<WORKDIR>/baseline/venv/lib/python3.12/site-packages/markupsafe/__init__.py)\n",
+        "output_truncated": false,
+        "duration_seconds": 0.066,
+        "test_summary": null
+      }
+    ],
+    "setup": [
+      {
+        "command": [
+          "<WORKDIR>/baseline/venv/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "-r",
+          "requirements.txt"
+        ],
+        "display": "<WORKDIR>/baseline/venv/bin/python -m pip install -r requirements.txt",
+        "cwd": ".",
+        "started_at": "2026-10-15T08:21:10+00:00",
+        "timeout_seconds": 600,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "Collecting Jinja2==2.11.3 (from -r requirements.txt (line 1))\n  Using cached Jinja2-2.11.3-py2.py3-none-any.whl.metadata (3.5 kB)\nCollecting MarkupSafe==3.0.4 (from -r requirements.txt (line 2))\n  Using cached markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)\nUsing cached Jinja2-2.11.3-py2.py3-none-any.whl (125 kB)\nUsing cached markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)\nInstalling collected packages: MarkupSafe, Jinja2\nSuccessfully installed Jinja2-2.11.3 MarkupSafe-3.0.4\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 0.833,
+        "test_summary": null
+      }
+    ]
+  },
+  "after": {
+    "passed": true,
+    "all_commands_attempted": true,
+    "exit_code": 0,
+    "command": [
+      "<WORKDIR>/after/venv/bin/python",
+      "check_import.py"
+    ],
+    "test_summary": null,
+    "commands": [
+      {
+        "command": [
+          "<WORKDIR>/after/venv/bin/python",
+          "-m",
+          "pip",
+          "check"
+        ],
+        "display": "<WORKDIR>/after/venv/bin/python -m pip check",
+        "cwd": ".",
+        "started_at": "2026-10-15T08:21:17+00:00",
+        "timeout_seconds": 600,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "No broken requirements found.\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 0.344,
+        "test_summary": null
+      },
+      {
+        "command": [
+          "<WORKDIR>/after/venv/bin/python",
+          "check_import.py"
+        ],
+        "display": "<WORKDIR>/after/venv/bin/python check_import.py",
+        "cwd": ".",
+        "started_at": "2026-10-15T08:21:17+00:00",
+        "timeout_seconds": 600,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "render ok: Hello &lt;world&gt;\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 0.083,
+        "test_summary": null
+      }
+    ],
+    "setup": [
+      {
+        "command": [
+          "<WORKDIR>/after/venv/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "-r",
+          "requirements.txt"
+        ],
+        "display": "<WORKDIR>/after/venv/bin/python -m pip install -r requirements.txt",
+        "cwd": ".",
+        "started_at": "2026-10-15T08:21:15+00:00",
+        "timeout_seconds": 600,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "Collecting Jinja2==2.11.3 (from -r requirements.txt (line 1))\n  Using cached Jinja2-2.11.3-py2.py3-none-any.whl.metadata (3.5 kB)\nCollecting MarkupSafe==3.0.4 (from -r requirements.txt (line 2))\n  Using cached markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)\nUsing cached Jinja2-2.11.3-py2.py3-none-any.whl (125 kB)\nUsing cached markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)\nInstalling collected packages: MarkupSafe, Jinja2\nSuccessfully installed Jinja2-2.11.3 MarkupSafe-3.0.4\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 0.836,
+        "test_summary": null
+      },
+      {
+        "command": [
+          "<WORKDIR>/after/venv/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "MarkupSafe==2.0.1"
+        ],
+        "display": "<WORKDIR>/after/venv/bin/python -m pip install MarkupSafe==2.0.1",
+        "cwd": ".",
+        "started_at": "2026-10-15T08:21:16+00:00",
+        "timeout_seconds": 600,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "Collecting MarkupSafe==2.0.1\n  Using cached markupsafe-2.0.1-cp312-cp312-linux_x86_64.whl\nInstalling collected packages: MarkupSafe\n  Attempting uninstall: MarkupSafe\n    Found existing installation: MarkupSafe 3.0.4\n    Uninstalling MarkupSafe-3.0.4:\n      Successfully uninstalled MarkupSafe-3.0.4\nSuccessfully installed MarkupSafe-2.0.1\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 0.61,
+        "test_summary": null
+      }
+    ],
+    "file_edits": []
+  },
+  "before": {
+    "passed": false,
+    "all_commands_attempted": true,
+    "exit_code": 1,
+    "command": [
+      "<WORKDIR>/baseline/venv/bin/python",
+      "check_import.py"
+    ],
+    "test_summary": null,
+    "commands": [
+      {
+        "command": [
+          "<WORKDIR>/baseline/venv/bin/python",
+          "-m",
+          "pip",
+          "check"
+        ],
+        "display": "<WORKDIR>/baseline/venv/bin/python -m pip check",
+        "cwd": ".",
+        "started_at": "2026-10-15T08:21:11+00:00",
+        "timeout_seconds": 600,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "No broken requirements found.\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 0.427,
+        "test_summary": null
+      },
+      {
+        "command": [
+          "<WORKDIR>/baseline/venv/bin/python",
+          "check_import.py"
+        ],
+        "display": "<WORKDIR>/baseline/venv/bin/python check_import.py",
+        "cwd": ".",
+        "started_at": "2026-10-15T08:21:12+00:00",
+        "timeout_seconds": 600,
+        "shell": false,
+        "status": "failed",
+        "exit_code": 1,
+        "passed": false,
+        "timed_out": false,
+        "stdout": "",
+        "stderr": "Traceback (most recent call last):\n  File \"<WORKDIR>/baseline/project/check_import.py\", line 3, in <module>\n    from app import render\n  File \"<WORKDIR>/baseline/project/app.py\", line 5, in <module>\n    from jinja2 import Template\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/__init__.py\", line 12, in <module>\n    from .environment import Environment\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/environment.py\", line 25, in <module>\n    from .defaults import BLOCK_END_STRING\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/defaults.py\", line 3, in <module>\n    from .filters import FILTERS as DEFAULT_FILTERS  # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/filters.py\", line 13, in <module>\n    from markupsafe import soft_unicode\nImportError: cannot import name 'soft_unicode' from 'markupsafe' (<WORKDIR>/baseline/venv/lib/python3.12/site-packages/markupsafe/__init__.py)\n",
+        "output_truncated": false,
+        "duration_seconds": 0.066,
+        "test_summary": null
+      }
+    ],
+    "setup": [
+      {
+        "command": [
+          "<WORKDIR>/baseline/venv/bin/python",
+          "-m",
+          "pip",
+          "install",
+          "-r",
+          "requirements.txt"
+        ],
+        "display": "<WORKDIR>/baseline/venv/bin/python -m pip install -r requirements.txt",
+        "cwd": ".",
+        "started_at": "2026-10-15T08:21:10+00:00",
+        "timeout_seconds": 600,
+        "shell": false,
+        "status": "passed",
+        "exit_code": 0,
+        "passed": true,
+        "timed_out": false,
+        "stdout": "Collecting Jinja2==2.11.3 (from -r requirements.txt (line 1))\n  Using cached Jinja2-2.11.3-py2.py3-none-any.whl.metadata (3.5 kB)\nCollecting MarkupSafe==3.0.4 (from -r requirements.txt (line 2))\n  Using cached markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)\nUsing cached Jinja2-2.11.3-py2.py3-none-any.whl (125 kB)\nUsing cached markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)\nInstalling collected packages: MarkupSafe, Jinja2\nSuccessfully installed Jinja2-2.11.3 MarkupSafe-3.0.4\n",
+        "stderr": "",
+        "output_truncated": false,
+        "duration_seconds": 0.833,
+        "test_summary": null
+      }
+    ]
+  },
+  "test_summary": "Status VERIFIED_CHANGE. baseline: failed after: passed Baseline captured; declared dependency change applied with evidence; every baseline command was repeated after the change and passed.",
+  "trust_boundary": "Configured commands may execute arbitrary project code. They ran only because a verification configuration was supplied.",
+  "limitations": [
+    "Verification applies only to the exact commands, project copy and environment recorded here.",
+    "A passing command is not a dependency change; a dependency change is not a verified fix; VERIFIED_CHANGE means the declared change was applied with evidence and the recorded commands passed afterwards.",
+    "A passing verification does not establish that the change is the best long-term choice, and no security advisory data is consulted.",
+    "Network access was not restricted during setup commands."
+  ]
+}
