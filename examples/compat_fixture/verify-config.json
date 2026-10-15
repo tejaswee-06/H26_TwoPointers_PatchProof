@@ -1,0 +1,18 @@
+{
+  "description": "SYNTHETIC FIXTURE (not LinkWatch): Jinja2 2.11.3 + MarkupSafe 3.0.4 import failure vs MarkupSafe 2.0.1 diagnostic change",
+  "target": "project",
+  "isolation": "venv",
+  "timeout_seconds": 600,
+  "baseline": {
+    "setup": [["{python}", "-m", "pip", "install", "-r", "requirements.txt"]],
+    "commands": [["{python}", "-m", "pip", "check"], ["{python}", "check_import.py"]]
+  },
+  "after": {
+    "setup": [["{python}", "-m", "pip", "install", "-r", "requirements.txt"]],
+    "commands": [["{python}", "-m", "pip", "check"], ["{python}", "check_import.py"]]
+  },
+  "change": {
+    "description": "Diagnostic only: pin MarkupSafe to 2.0.1 in the disposable after-environment",
+    "pip_install": ["MarkupSafe==2.0.1"]
+  }
+}
