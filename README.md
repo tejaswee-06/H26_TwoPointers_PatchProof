@@ -1,227 +1,367 @@
-<div align="center">
+# 🔭 PatchProof
+### Evidence-Driven Dependency Migration Intelligence
 
-# 🔭 linkwatch
+**Team TwoPointers · Hacktoberfest · K. J. Somaiya College of Engineering**
 
-**Keep an eye on your websites from the terminal.**
+PatchProof is an evidence-driven dependency analysis and migration intelligence system built on the LinkWatch project foundation. It examines dependency declarations, traces source-code usage, identifies inconsistencies, and uses a locally hosted Gemma model to generate structured migration recommendations grounded in collected evidence.
 
-A small, friendly link & uptime checker: list your sites in one file, run one command,
-and get a live status table plus a clean HTML status page you can host anywhere.
-
-![Python](https://img.shields.io/badge/python-3.12-3776AB?logo=python&logoColor=white)
-![Interface](https://img.shields.io/badge/interface-CLI-4B4B4B?logo=gnubash&logoColor=white)
-![Docker](https://img.shields.io/badge/docker-ready-2496ED?logo=docker&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-green)
-
-[Quick start](#-quick-start) •
-[Usage](#-usage) •
-[Configuration](#%EF%B8%8F-configuration) •
-[How it works](#-how-it-works) •
-[Tests](#-running-the-tests)
-
-</div>
+Rather than treating AI-generated suggestions as verified fixes, PatchProof separates **evidence collection, AI reasoning, and independent verification** to make dependency migration more transparent and auditable.
 
 ---
 
-## ✨ Features
+## 👥 Team
 
-- 📋 **One config file**: list every site you care about in `sites.toml`
-- ⚡ **Live terminal table**: watch results fill in as each site is checked
-- 🟢 **Clear status**: UP/DOWN, HTTP status code, response time and page title
-- 🕒 **Last-Modified tracking**: see when a page was last updated (when the server reports it)
-- 💾 **Cached results**: the last run is saved, so you can build reports any time
-- 🌐 **HTML status page**: one command turns your results into a shareable `status.html`
-- 🐳 **Docker ready**: run everything without touching your local Python
+| Name | Role |
+|---|---|
+| Tejaswee Rajput | Person 2 — AI migration intelligence, evidence-grounded reasoning, and validation |
+| Sohana Pilli | Person 3 — Frontend, dashboard, and integration |
+| Rahul Sharma | Person 1 — Dependency scanning, usage tracing, and verification |
 
----
-
-## 🖥️ Preview
-
-```text
-$ python -m linkwatch.cli check
-                                    My sites
-┏━━━━━━━━━┳━━━━━━━━┳━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ Site    ┃ Status ┃ Code ┃   Time ┃ Title                           ┃
-┡━━━━━━━━━╇━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│ Python  │ UP     │  200 │ 113 ms │ Welcome to Python.org           │
-│ PyPI    │ UP     │  200 │  59 ms │ PyPI · The Python Package Index │
-│ Example │ UP     │  200 │ 204 ms │ Example Domain                  │
-│ GitHub  │ UP     │  200 │ 236 ms │ GitHub                          │
-└─────────┴────────┴──────┴────────┴─────────────────────────────────┘
-4/4 sites up, results saved to ~/.cache/linkwatch/results.json
-```
+**Team Name:** TwoPointers  
+**Event:** Hacktoberfest  
+**Institution:** K. J. Somaiya College of Engineering
 
 ---
 
-## 🚀 Quick start
+## 🎯 Problem Statement
 
-You only need **one** of the two options below.
+Dependency migrations are a recurring challenge in software development. A project may declare conflicting dependency versions across configuration files, contain packages with unclear source-code usage, or rely on outdated dependencies that behave differently with newer releases.
 
-### Option A: Docker (no Python setup needed)
+Developers must often investigate these inconsistencies manually across manifests, imports, compatibility requirements, and test results.
 
-```bash
-git clone https://github.com/rishrek/linkwatch.git
-cd linkwatch
-make docker-build
-docker run --rm -it linkwatch python -m linkwatch.cli check
-```
+PatchProof aims to simplify this process by connecting dependency evidence with AI-assisted migration reasoning and independent verification.
 
-### Option B: Local Python 3.12
+### Our objectives
 
-```bash
-git clone https://github.com/rishrek/linkwatch.git
-cd linkwatch
-make setup                    # creates .venv and installs everything (one time)
-source .venv/bin/activate     # do this in every new terminal
-python -m linkwatch.cli check
-```
-
-<details>
-<summary><b>On Windows, or without <code>make</code>?</b></summary>
-
-```powershell
-py -3.12 -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt -r requirements-dev.txt
-python -m linkwatch.cli check
-```
-
-If your Python 3.12 has a different name on macOS/Linux, pass it to make:
-`make setup PYTHON=/path/to/python3.12`
-
-</details>
+- Detect conflicting dependency declarations across project manifests.
+- Trace dependency usage in source code and tests.
+- Generate structured, evidence-grounded migration recommendations using a local Gemma model.
+- Distinguish observed facts from AI-generated hypotheses.
+- Support independent verification before a proposed migration is treated as successful.
+- Produce reusable, machine-readable evidence and migration outputs.
 
 ---
 
-## 📖 Usage
+## ✨ Key Features
 
-| Command | What it does |
-|---------|--------------|
-| `python -m linkwatch.cli check` | Checks every site, shows the live table and saves the results |
-| `python -m linkwatch.cli report` | Builds `status.html` from the last saved results |
-| `python -m linkwatch.cli info` | Shows where the templates and cached results live |
-| `python -m linkwatch.cli --help` | Lists all commands and options |
-
-### Options
-
-| Command | Option | Default | Description |
-|---------|--------|---------|-------------|
-| `check` | `--config PATH` | `sites.toml` | Use a different sites file |
-| `report` | `-o, --output PATH` | `status.html` | Where to write the HTML page |
-| `report` | `--title TEXT` | `linkwatch` | Heading shown on the status page |
-
-### A typical session
-
-```bash
-python -m linkwatch.cli check                     # 1. check your sites
-python -m linkwatch.cli report -o status.html     # 2. build the status page
-open status.html                                  # 3. view it (xdg-open on Linux)
-```
+- **Dependency conflict detection:** Identifies inconsistencies across dependency manifests.
+- **Source usage tracing:** Searches application code and tests for dependency imports.
+- **Local AI reasoning:** Uses Ollama to run the configured Gemma model locally.
+- **Evidence-grounded recommendations:** Provides migration reasoning based on available project evidence.
+- **Structured AI output:** Organizes recommendations into a machine-readable format.
+- **Verification-first design:** Keeps proposed recommendations separate from independently verified outcomes.
+- **Reusable artifacts:** Generates JSON evidence and usage reports for downstream analysis and integration.
 
 ---
 
-## ⚙️ Configuration
+## 🏗️ System Architecture
 
-All sites live in **`sites.toml`** in the project folder:
-
-```toml
-title = "My sites"
-
-[[sites]]
-name = "Python"
-url = "https://www.python.org"
-
-[[sites]]
-name = "Example"
-url = "https://example.com"
-```
-
-| Key | Required | Description |
-|-----|----------|-------------|
-| `title` | no | Heading shown above the terminal table |
-| `[[sites]]` | yes | One block per site you want to check |
-| `name` | yes | Short label for the site |
-| `url` | yes | Full address, must start with `http://` or `https://` |
-
-To add a site, copy a `[[sites]]` block and change the name and URL.
-
-### Where results are stored
-
-| System | Location |
-|--------|----------|
-| macOS | `~/Library/Caches/linkwatch/results.json` |
-| Linux | `~/.cache/linkwatch/results.json` |
-| Windows | `%LOCALAPPDATA%\linkwatch\linkwatch\Cache\results.json` |
-
-Set the `LINKWATCH_CACHE_DIR` environment variable to keep results somewhere else.
-
----
-
-## 🧠 How it works
+The following diagram describes the intended end-to-end PatchProof architecture.
 
 ```mermaid
-flowchart LR
-    A["sites.toml"] -->|"check"| B["Live table in terminal"]
-    A -->|"check"| C[("results.json cache")]
-    C -->|"report"| D["status.html"]
+flowchart TD
+    A["Project Repository"] --> B["Dependency Manifests"]
+    A --> C["Source Code and Tests"]
+
+    B --> D["Dependency Scanner"]
+    C --> E["Source Usage Tracer"]
+
+    D --> F["Evidence Reports"]
+    E --> F
+
+    F --> G["Migration Intelligence"]
+    G --> H["Local Gemma Model via Ollama"]
+    H --> I["Structured Migration Recommendations"]
+
+    I --> J["Independent Verification"]
+    F --> J
+
+    J --> K["Verification Results"]
+    I --> L["Migration Artifacts"]
+    K --> L
+
+    L --> M["Dashboard and Reports"]
 ```
 
-1. **Load**: `sites.toml` is read and validated (every site needs a name and a valid URL).
-2. **Check**: each site gets an HTTP GET request, and linkwatch records the status code, response time, page title and `Last-Modified` header.
-3. **Save**: results are written as JSON to your cache folder.
-4. **Report**: the saved results are rendered into a standalone HTML page with a summary of what's up and what's down.
+*Architecture note: this diagram represents the intended integrated workflow. Individual components and integration points should be verified against the final submitted code.*
 
-### Project structure
+---
+
+## 🔄 End-to-End Workflow
+
+```mermaid
+flowchart TD
+    A(["Start"]) --> B["Scan Dependency Manifests"]
+    B --> C["Identify Version Conflicts"]
+    C --> D["Trace Dependency Usage"]
+    D --> E["Collect Supporting Evidence"]
+    E --> F["Generate AI Migration Advice"]
+    F --> G{"Recommendation Generated?"}
+
+    G -- "No" --> H["Report AI Failure"]
+    H --> Z(["End"])
+
+    G -- "Yes" --> I["Mark Recommendation as Proposed"]
+    I --> J["Run Independent Verification"]
+    J --> K{"Verification Passed?"}
+
+    K -- "Yes" --> L["Record Verified Outcome"]
+    K -- "No or Not Run" --> M["Keep Unverified Status"]
+
+    L --> N["Export Structured Artifacts"]
+    M --> N
+    N --> Z
+```
+
+The workflow is designed to prevent an AI-generated recommendation from being presented as a verified fix before independent checks have been completed.
+
+---
+
+## 🧠 AI-Assisted Dependency Migration
+
+PatchProof uses a local language model to help interpret dependency evidence and propose migration strategies.
+
+### AI processing flow
+
+```mermaid
+sequenceDiagram
+    participant Scanner as Dependency Scanner
+    participant Tracer as Usage Tracer
+    participant Agent as Migration Agent
+    participant Ollama as Local Gemma Model
+    participant Verifier as Independent Verifier
+
+    Scanner->>Agent: Dependency findings
+    Tracer->>Agent: Source usage evidence
+    Agent->>Ollama: Evidence and analysis context
+    Ollama-->>Agent: Structured migration advice
+    Agent->>Agent: Validate and structure recommendation
+    Agent->>Verifier: Proposed migration for checking
+    Verifier-->>Agent: Verification outcome
+    Agent-->>Agent: Preserve evidence and status
+```
+
+### Why local inference?
+
+- Keeps model inference on the local machine when using a local Ollama instance.
+- Avoids requiring a hosted inference API for the configured model.
+- Enables experimentation with dependency migration reasoning.
+- Makes model availability and runtime requirements explicit.
+
+Local inference does not automatically guarantee correctness. Recommendations still require appropriate validation and verification.
+
+---
+
+## 🔎 Example Finding
+
+During a dependency evidence scan, PatchProof identified conflicting Pydantic declarations:
+
+| File | Declaration |
+|---|---|
+| `requirements.txt` | `pydantic==1.10.13` |
+| `pyproject.toml` | `pydantic>=2` |
+
+**Finding:** The project contains inconsistent dependency declarations.
+
+This is an observed configuration inconsistency. It does not, by itself, establish which version is correct or prove that the application fails at runtime. PatchProof's migration intelligence can use this evidence to formulate a recommendation, while verification must determine whether a proposed resolution actually works.
+
+---
+
+## 🛠️ Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| Python | Core implementation and analysis |
+| Ollama | Local model runtime |
+| Gemma | AI-assisted migration reasoning |
+| JSON | Machine-readable evidence and recommendations |
+| TOML and requirements files | Dependency declaration inputs |
+| Pytest | Automated testing |
+| Mermaid | Architecture and workflow documentation |
+
+The final submission should reflect the actual dependencies and components present in the submitted repository.
+
+---
+
+## 📁 Project Structure
 
 ```text
-linkwatch/
+PatchProof/
+├── patchproof/
+│   ├── scanner.py
+│   ├── usage.py
+│   └── ai/
+│       ├── migration_agent.py
+│       ├── ollama_adapter.py
+│       └── ...
 ├── linkwatch/
-│   ├── cli.py            # commands: check, report, info
-│   ├── config.py         # reads and validates sites.toml
-│   ├── checker.py        # visits each site and collects results
-│   ├── encoding.py       # page charset detection and title extraction
-│   ├── dates.py          # Last-Modified parsing
-│   ├── http_patch.py     # default request headers
-│   ├── cache.py          # saves and loads results.json
-│   ├── report.py         # builds the HTML status page
-│   ├── resources.py      # locates the bundled templates
-│   └── templates/
-│       └── status.html.j2
-├── tests/                # pytest suite with a tiny local test server
-├── sites.toml            # your list of sites
-├── requirements.txt      # app dependencies
-├── requirements-dev.txt  # test dependencies
-├── Dockerfile
-└── Makefile
+│   └── ... original LinkWatch foundation
+├── tests/
+├── requirements.txt
+├── pyproject.toml
+└── README.md
 ```
+
+*The tree above is illustrative. Preserve the actual filenames and directories in the final repository rather than adding placeholder files just to match this diagram.*
 
 ---
 
-## 🧪 Running the tests
+## 🚀 Getting Started
 
-The tests start a tiny local web server, so they don't depend on real websites.
+### Prerequisites
+
+- Python compatible with the project's dependency set
+- Git
+- [Ollama](https://ollama.com/download)
+- The Gemma model configured by the project
+- A working local Ollama service
+
+### 1. Clone the repository
 
 ```bash
-make test            # locally (activate .venv first)
-make docker-test     # inside Docker (run make docker-build first)
+git clone <YOUR_PATCHPROOF_REPOSITORY_URL>
+cd <YOUR_PATCHPROOF_DIRECTORY>
 ```
 
-### Make targets
+### 2. Create and activate a virtual environment
 
-| Target | Description |
-|--------|-------------|
-| `make setup` | Create `.venv` and install all dependencies |
-| `make test` | Run the pytest suite |
-| `make test-nose` | Run the suite with nose |
-| `make docker-build` | Build the Docker image |
-| `make docker-test` | Run the tests inside Docker |
+**Windows — Command Prompt**
+
+```bat
+py -3.12 -m venv .venv
+.venv\Scripts\activate
+```
+
+**macOS/Linux**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Use the Python version supported by the final project's dependencies.
+
+### 3. Install dependencies
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+Install development dependencies separately if the repository provides a development requirements file:
+
+```bash
+python -m pip install -r requirements-dev.txt
+```
+
+### 4. Configure the local model
+
+Check which models are available:
+
+```bash
+ollama list
+```
+
+Pull the exact model configured by the migration agent if it is not installed. For the current configuration, the expected model identifier is:
+
+```bash
+ollama pull gemma4:e2b-it-q4_K_M
+```
+
+If that identifier is unavailable in your Ollama installation, use a supported model identifier and update the project configuration accordingly. The model name used by the application must match the installed model name.
+
+### 5. Run the analysis pipeline
+
+Run these commands from the project root, assuming the corresponding modules are present:
+
+```bash
+python -m patchproof.scanner
+python -m patchproof.usage
+python -m patchproof.ai.migration_agent
+```
+
+The scanner and usage tracer generate their respective evidence reports. The AI advisor requires the configured model to be available and the Ollama service to be reachable.
+
+### 6. Inspect generated reports
+
+```bash
+python -m json.tool patchproof-report.json
+python -m json.tool patchproof-usage-report.json
+python -m json.tool patchproof-ai-advice.json
+```
+
+The AI advice file will only be available if the migration agent completes successfully.
 
 ---
 
-## 🤝 Contributing
+## 🧪 Testing
 
-Ideas, bug reports and pull requests are welcome. Fork the repo, create a branch,
-and open a PR. Please run `make test` before submitting.
+Run the project's test suite from the repository root:
+
+```bash
+python -m pytest -q
+```
+
+Tests should cover dependency evidence extraction, source usage tracing, AI response validation, failure handling, and verification-state behavior where those components are implemented.
+
+A passing test suite demonstrates that the covered tests pass; it does not independently establish that every proposed dependency migration is safe.
+
+---
+
+## 📦 Expected Outputs
+
+| Artifact | Purpose |
+|---|---|
+| `patchproof-report.json` | Dependency findings and manifest evidence |
+| `patchproof-usage-report.json` | Source-code dependency usage evidence |
+| `patchproof-ai-advice.json` | Structured AI migration recommendations, when generation succeeds |
+| Verification results | Outcome of independent checks, where implemented |
+
+Exact artifact schemas and output paths should be documented from the final implementation.
+
+---
+
+## 🔐 Design Principles
+
+1. **Evidence before inference:** Recommendations should be grounded in observable project data.
+2. **Explicit uncertainty:** A hypothesis is not the same as a proven root cause.
+3. **Verification before success:** A proposed change must not be labelled verified until the relevant checks pass.
+4. **Traceability:** Keep findings, recommendations, and verification results distinguishable.
+5. **Local-first inference:** Support local model execution through Ollama.
+6. **Reproducibility:** Make configuration, model requirements, and test instructions clear.
+
+---
+
+## 🗺️ Future Scope
+
+- Integrate a unified dashboard for findings, recommendations, and verification outcomes.
+- Expand dependency compatibility analysis across additional ecosystems.
+- Add automated, isolated migration test environments.
+- Generate a reusable Dependency Exit Capsule containing structured evidence and migration outcomes.
+- Support comparison of multiple migration hypotheses.
+- Add CI integration for repeatable dependency checks.
+
+These items are potential extensions and should not be interpreted as completed functionality unless present in the submitted implementation.
+
+---
+
+## 🤝 Acknowledgements
+
+PatchProof builds on the LinkWatch project foundation by extending the project toward evidence-driven dependency analysis and AI-assisted migration intelligence.
+
+We acknowledge the original LinkWatch maintainers and contributors whose work provided the starting point for this project.
+
+---
 
 ## 📄 License
 
-Released under the [MIT License](LICENSE).
+Retain the original repository's license and attribution requirements. Refer to the `LICENSE` file in the repository for the applicable terms.
+
+---
+
+<div align="center">
+
+**Built by Team TwoPointers**
+
+*Making dependency migration more evidence-driven, transparent, and verifiable.*
+
+</div>
