@@ -1,0 +1,67 @@
+{
+  "description": "Configuration used for the bundled LinkWatch run. In the dashboard the target is always the scanned folder.",
+  "target": "C:\\path\\to\\LinkWatch",
+  "isolation": "venv",
+  "timeout_seconds": 900,
+  "baseline": {
+    "setup": [
+      [
+        "{python}",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "requirements.txt",
+        "-r",
+        "requirements-dev.txt"
+      ]
+    ],
+    "commands": [
+      [
+        "{python}",
+        "-m",
+        "pip",
+        "check"
+      ],
+      [
+        "{python}",
+        "-m",
+        "pytest",
+        "-q"
+      ]
+    ]
+  },
+  "after": {
+    "setup": [
+      [
+        "{python}",
+        "-m",
+        "pip",
+        "install",
+        "-r",
+        "requirements.txt",
+        "-r",
+        "requirements-dev.txt"
+      ]
+    ],
+    "commands": [
+      [
+        "{python}",
+        "-m",
+        "pip",
+        "check"
+      ],
+      [
+        "{python}",
+        "-m",
+        "pytest",
+        "-q"
+      ]
+    ]
+  },
+  "change": {
+    "pip_install": [
+      "MarkupSafe==2.0.1"
+    ]
+  }
+}
