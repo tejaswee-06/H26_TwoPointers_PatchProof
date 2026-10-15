@@ -1,9 +1,11 @@
+.venv/
+venv/
 __pycache__/
 *.pyc
 .pytest_cache/
+.patchproof-workspace/
+patchproof-output/
+out/
+frontend/node_modules/
+frontend/dist/
 *.egg-info/
-build/
-dist/
-.venv/
-venv/
-status.html
