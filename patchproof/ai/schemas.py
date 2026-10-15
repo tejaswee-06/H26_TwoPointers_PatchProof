@@ -2,6 +2,7 @@
 """Validation for PatchProof migration-advisor output."""
 import json
 
+
 REQUIRED_KEYS = {
     "model",
     "runtime",
@@ -23,6 +24,7 @@ OPTION_KEYS = {
 
 
 def validate_advice(data: dict, expected_finding_ids: list[str]) -> dict:
+    """Validate Gemma's migration advice and mark it as unverified."""
     if not isinstance(data, dict):
         raise ValueError("AI output must be a JSON object")
 
@@ -40,6 +42,12 @@ def validate_advice(data: dict, expected_finding_ids: list[str]) -> dict:
     if not isinstance(data["finding_ids"], list):
         raise ValueError("finding_ids must be a list")
 
+    if not all(
+        isinstance(item, str) and item.strip()
+        for item in data["finding_ids"]
+    ):
+        raise ValueError("finding_ids must contain non-empty strings")
+
     if not set(data["finding_ids"]).issubset(set(expected_finding_ids)):
         raise ValueError("AI referenced an unknown finding ID")
 
@@ -56,15 +64,36 @@ def validate_advice(data: dict, expected_finding_ids: list[str]) -> dict:
                 f"Migration option missing: {sorted(missing_option)}"
             )
 
+        if (
+            not isinstance(option["description"], str)
+            or not option["description"].strip()
+        ):
+            raise ValueError(
+                "description must be a non-empty string"
+            )
+
         for key in (
-            "benefits", "risks", "files_to_change",
-            "verification_commands"
+            "benefits",
+            "risks",
+            "files_to_change",
+            "verification_commands",
         ):
             if not isinstance(option[key], list):
                 raise ValueError(f"{key} must be a list")
 
+            if any(
+                not isinstance(item, str) or not item.strip()
+                for item in option[key]
+            ):
+                raise ValueError(
+                    f"{key} must contain only non-empty strings"
+                )
+
         if not isinstance(option["rollback"], str):
             raise ValueError("rollback must be a string")
+
+        if not option["rollback"].strip():
+            raise ValueError("rollback must be a non-empty string")
 
     index = data["recommended_option"]
     if type(index) is not int or not 0 <= index < len(data["options"]):
@@ -73,16 +102,31 @@ def validate_advice(data: dict, expected_finding_ids: list[str]) -> dict:
     if not isinstance(data["uncertainties"], list):
         raise ValueError("uncertainties must be a list")
 
+    if any(
+        not isinstance(item, str) or not item.strip()
+        for item in data["uncertainties"]
+    ):
+        raise ValueError(
+            "uncertainties must contain only non-empty strings"
+        )
+
     # The AI cannot certify its own recommendation.
     data["decision_status"] = "PROPOSED"
     data["verification_status"] = "NOT_RUN"
+
     return data
 
 
-def parse_and_validate(raw: str, expected_finding_ids: list[str]) -> dict:
+def parse_and_validate(
+    raw: str,
+    expected_finding_ids: list[str],
+) -> dict:
+    """Parse JSON from Gemma and validate its structure."""
     try:
         result = json.loads(raw)
     except json.JSONDecodeError as exc:
-        raise ValueError(f"Gemma returned invalid JSON: {exc}") from exc
+        raise ValueError(
+            f"Gemma returned invalid JSON: {exc}"
+        ) from exc
 
     return validate_advice(result, expected_finding_ids)
