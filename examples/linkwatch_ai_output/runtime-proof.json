@@ -1,0 +1,17 @@
+{
+  "model_id": "gemma4:e2b-it-q4_K_M",
+  "runtime": "ollama-local",
+  "ollama_version": "0.40.4",
+  "inference_command": "python -m patchproof.ai.migration_agent",
+  "response_excerpt": "A manifest inconsistency exists for the 'pydantic' package, indicating conflicting version declarations across dependency files. requirements.txt specifies pydantic==1.10.13, while pyproject.toml specifies pydantic>=2. This conflict requires immediate resolution to ensure consistent dependency management and prevent runtime errors caused by mismatched expectations or installation failures.",
+  "inference_duration_ns": 45123493400,
+  "evidence_context": {
+    "manifest_excerpt_count": 2,
+    "usage_match_count": 1,
+    "test_evidence_available": true,
+    "test_evidence_source": "patchproof-test-evidence.txt"
+  },
+  "decision_status": "PROPOSED",
+  "verification_status": "NOT_RUN",
+  "note": "This record describes the actual successful local inference that generated the adjacent advice file. It is not proof that a proposed migration works."
+}
