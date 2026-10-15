@@ -1,0 +1,628 @@
+{
+  "schema_version": "2.0",
+  "report_type": "dependency_exit_capsule",
+  "product": "PatchProof",
+  "purpose": "Evidence-backed dependency maintenance record",
+  "labels": {
+    "scan_findings": "OBSERVED",
+    "usage": "OBSERVED",
+    "ai_analysis": "AI PROPOSAL",
+    "verification": "VERIFIED"
+  },
+  "repository": {
+    "root": "project",
+    "scan_status": "completed",
+    "manifests_scanned": 1,
+    "declaration_count": 2,
+    "finding_count": 0,
+    "error_count": 0
+  },
+  "scan": {
+    "schema_version": "2.0",
+    "report_type": "scan",
+    "timestamp_policy": "No wall-clock timestamp is embedded so repeated scans of unchanged source are byte-identical.",
+    "root": "project",
+    "root_policy": "Only the directory name is recorded; all paths in this report are relative to the scan root.",
+    "scan_status": "completed",
+    "summary": {
+      "manifest_count": 1,
+      "declaration_count": 2,
+      "finding_count": 0,
+      "error_count": 0,
+      "note_count": 0
+    },
+    "manifests_scanned": [
+      "requirements.txt"
+    ],
+    "manifests": [
+      {
+        "file": "requirements.txt",
+        "format": "requirements",
+        "declaration_count": 2,
+        "included_by": []
+      }
+    ],
+    "declaration_count": 2,
+    "declarations": [
+      {
+        "name": "Jinja2",
+        "normalized_name": "jinja2",
+        "extras": [],
+        "specifier": "==2.11.3",
+        "original_specifier": "==2.11.3",
+        "constraint": "==2.11.3",
+        "marker": null,
+        "url": null,
+        "kind": "requirement",
+        "file": "requirements.txt",
+        "line": 1,
+        "section": "requirements",
+        "excerpt": "Jinja2==2.11.3"
+      },
+      {
+        "name": "MarkupSafe",
+        "normalized_name": "markupsafe",
+        "extras": [],
+        "specifier": "==3.0.4",
+        "original_specifier": "==3.0.4",
+        "constraint": "==3.0.4",
+        "marker": null,
+        "url": null,
+        "kind": "requirement",
+        "file": "requirements.txt",
+        "line": 2,
+        "section": "requirements",
+        "excerpt": "MarkupSafe==3.0.4"
+      }
+    ],
+    "directives": [],
+    "findings": [],
+    "errors": [],
+    "exclusions": {
+      "directory_names": [
+        ".eggs",
+        ".git",
+        ".hg",
+        ".idea",
+        ".mypy_cache",
+        ".nox",
+        ".pytest_cache",
+        ".ruff_cache",
+        ".svn",
+        ".tox",
+        ".venv",
+        ".vscode",
+        "__pycache__",
+        "build",
+        "dist",
+        "node_modules",
+        "patchproof-output",
+        "patchproof_output",
+        "site-packages",
+        "venv"
+      ],
+      "directory_patterns": [
+        "*.egg-info",
+        "*.dist-info",
+        "directories containing pyvenv.cfg"
+      ],
+      "user_exclusions": [],
+      "excluded_directories_encountered": []
+    },
+    "limitations": [
+      "Only requirements*.txt, pyproject.toml, setup.cfg and setup.py (literal values) are parsed; Pipfile, poetry/pdm tables, conda files and lockfiles are not.",
+      "setup.py is analyzed statically and never executed; computed dependency lists are not evaluated.",
+      "Constraint files (-c) and remote includes are noted but not compared.",
+      "Compatibility of two specifiers is judged against a bounded set of candidate versions; when the result cannot be proven the finding is reported as uncertain.",
+      "Different or incompatible constraints are observations, not proof of runtime failure, and no security advisory data is consulted.",
+      "No manifests found means the repository was not assessed, not that it is clean."
+    ]
+  },
+  "usage": {
+    "schema_version": "2.0",
+    "report_type": "usage",
+    "root": "project",
+    "scan_status": "completed",
+    "python_files_scanned": 2,
+    "python_files_with_imports": 2,
+    "summary": {
+      "declared_packages": 2,
+      "by_status": {
+        "import_observed": 1,
+        "no_static_import_found": 1
+      },
+      "parse_error_count": 0,
+      "analysis_complete": true
+    },
+    "packages": [
+      {
+        "package": "jinja2",
+        "declarations": [
+          {
+            "file": "requirements.txt",
+            "line": 1,
+            "constraint": "==2.11.3",
+            "section": "requirements"
+          }
+        ],
+        "candidate_import_roots": [
+          "jinja2"
+        ],
+        "mapping_source": "installed_metadata",
+        "imports_found": [
+          {
+            "file": "app.py",
+            "line": 5,
+            "module": "jinja2",
+            "import_name": "jinja2",
+            "alias": null,
+            "kind": "from_import",
+            "statement": "from jinja2 import Template"
+          }
+        ],
+        "usage_status": "import_observed",
+        "interpretation": "Import(s) matching the candidate import root(s) were observed in source."
+      },
+      {
+        "package": "markupsafe",
+        "declarations": [
+          {
+            "file": "requirements.txt",
+            "line": 2,
+            "constraint": "==3.0.4",
+            "section": "requirements"
+          }
+        ],
+        "candidate_import_roots": [
+          "markupsafe"
+        ],
+        "mapping_source": "installed_metadata",
+        "imports_found": [],
+        "usage_status": "no_static_import_found",
+        "interpretation": "No static import was found. This is a review lead only, not proof the package is unused: dynamic imports, plugins, entry points, CLI use or optional features may still use the package.",
+        "review_lead_id": "U-9DDB9D1BF9"
+      }
+    ],
+    "review_leads": [
+      {
+        "id": "U-9DDB9D1BF9",
+        "type": "usage_review",
+        "severity": "info",
+        "package": "markupsafe",
+        "usage_status": "no_static_import_found",
+        "status": "observed",
+        "title": "No confirmed static import for markupsafe",
+        "summary": "No static import was found. This is a review lead only, not proof the package is unused: dynamic imports, plugins, entry points, CLI use or optional features may still use the package."
+      }
+    ],
+    "parse_errors": [],
+    "unresolved_dynamic_imports": {},
+    "mapping": {
+      "source": "installed_metadata_of_active_python",
+      "entries": 145
+    },
+    "exclusions": {
+      "excluded_directories_encountered": []
+    },
+    "limitations": [
+      "Import-to-distribution mappings come from metadata installed in the Python environment running this tool; uninstalled distributions fall back to a name-based guess and are labelled mapping_unavailable when unmatched.",
+      "Dynamic imports with non-literal targets, plugin loading, entry points, runtime loading, CLI-only use, data-only packages and optional features cannot be detected statically.",
+      "Literal importlib.import_module('x') / __import__('x') calls are recorded as kind=dynamic_literal.",
+      "A missing import must never be treated as proof that a package is unused; do not remove packages on this basis.",
+      "Import roots are matched at top level only; namespace packages shared by several distributions may over-match."
+    ]
+  },
+  "ai_analysis": null,
+  "verification": {
+    "schema_version": "2.0",
+    "report_type": "verification",
+    "status": "VERIFIED_CHANGE",
+    "status_reasons": [
+      "Baseline captured; declared dependency change applied with evidence; every baseline command was repeated after the change and passed."
+    ],
+    "verified": true,
+    "blockers": [],
+    "target": {
+      "name": "project",
+      "path_policy": "directory name only"
+    },
+    "description": "SYNTHETIC FIXTURE (not LinkWatch): Jinja2 2.11.3 + MarkupSafe 3.0.4 import failure vs MarkupSafe 2.0.1 diagnostic change",
+    "isolation": {
+      "requested": "venv",
+      "baseline_isolated": true,
+      "after_isolated": true,
+      "working_copy_used": true,
+      "note": "Fresh virtual environment created for this phase; the host environment was not modified."
+    },
+    "environment": {
+      "python_version": "3.12.3",
+      "python_implementation": "CPython",
+      "os": "Linux",
+      "os_release": "6.18.44-fc-v114",
+      "machine": "x86_64",
+      "interpreter_kind": "venv",
+      "environment_isolated": true,
+      "isolation_note": "Fresh virtual environment created for this phase; the host environment was not modified.",
+      "interpreter_probe_ok": true
+    },
+    "environments": {
+      "baseline": {
+        "python_version": "3.12.3",
+        "python_implementation": "CPython",
+        "os": "Linux",
+        "os_release": "6.18.44-fc-v114",
+        "machine": "x86_64",
+        "interpreter_kind": "venv",
+        "environment_isolated": true,
+        "isolation_note": "Fresh virtual environment created for this phase; the host environment was not modified.",
+        "interpreter_probe_ok": true
+      },
+      "after": {
+        "python_version": "3.12.3",
+        "python_implementation": "CPython",
+        "os": "Linux",
+        "os_release": "6.18.44-fc-v114",
+        "machine": "x86_64",
+        "interpreter_kind": "venv",
+        "environment_isolated": true,
+        "isolation_note": "Fresh virtual environment created for this phase; the host environment was not modified.",
+        "interpreter_probe_ok": true
+      }
+    },
+    "change": {
+      "declared": true,
+      "pip_install": [
+        "MarkupSafe==2.0.1"
+      ],
+      "file_edits": [],
+      "applied_with_evidence": true,
+      "environment_diff": [
+        {
+          "package": "markupsafe",
+          "before": "3.0.4",
+          "after": "2.0.1"
+        }
+      ],
+      "manifest_diff": []
+    },
+    "dependency_state": {
+      "before": {
+        "captured": true,
+        "packages": {
+          "jinja2": "2.11.3",
+          "markupsafe": "3.0.4",
+          "pip": "24.0"
+        }
+      },
+      "after": {
+        "captured": true,
+        "packages": {
+          "jinja2": "2.11.3",
+          "markupsafe": "2.0.1",
+          "pip": "24.0"
+        }
+      },
+      "difference": [
+        {
+          "package": "markupsafe",
+          "before": "3.0.4",
+          "after": "2.0.1"
+        }
+      ]
+    },
+    "baseline": {
+      "passed": false,
+      "all_commands_attempted": true,
+      "exit_code": 1,
+      "command": [
+        "<WORKDIR>/baseline/venv/bin/python",
+        "check_import.py"
+      ],
+      "test_summary": null,
+      "commands": [
+        {
+          "command": [
+            "<WORKDIR>/baseline/venv/bin/python",
+            "-m",
+            "pip",
+            "check"
+          ],
+          "display": "<WORKDIR>/baseline/venv/bin/python -m pip check",
+          "cwd": ".",
+          "started_at": "2026-10-15T08:21:11+00:00",
+          "timeout_seconds": 600,
+          "shell": false,
+          "status": "passed",
+          "exit_code": 0,
+          "passed": true,
+          "timed_out": false,
+          "stdout": "No broken requirements found.\n",
+          "stderr": "",
+          "output_truncated": false,
+          "duration_seconds": 0.427,
+          "test_summary": null
+        },
+        {
+          "command": [
+            "<WORKDIR>/baseline/venv/bin/python",
+            "check_import.py"
+          ],
+          "display": "<WORKDIR>/baseline/venv/bin/python check_import.py",
+          "cwd": ".",
+          "started_at": "2026-10-15T08:21:12+00:00",
+          "timeout_seconds": 600,
+          "shell": false,
+          "status": "failed",
+          "exit_code": 1,
+          "passed": false,
+          "timed_out": false,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"<WORKDIR>/baseline/project/check_import.py\", line 3, in <module>\n    from app import render\n  File \"<WORKDIR>/baseline/project/app.py\", line 5, in <module>\n    from jinja2 import Template\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/__init__.py\", line 12, in <module>\n    from .environment import Environment\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/environment.py\", line 25, in <module>\n    from .defaults import BLOCK_END_STRING\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/defaults.py\", line 3, in <module>\n    from .filters import FILTERS as DEFAULT_FILTERS  # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/filters.py\", line 13, in <module>\n    from markupsafe import soft_unicode\nImportError: cannot import name 'soft_unicode' from 'markupsafe' (<WORKDIR>/baseline/venv/lib/python3.12/site-packages/markupsafe/__init__.py)\n",
+          "output_truncated": false,
+          "duration_seconds": 0.066,
+          "test_summary": null
+        }
+      ],
+      "setup": [
+        {
+          "command": [
+            "<WORKDIR>/baseline/venv/bin/python",
+            "-m",
+            "pip",
+            "install",
+            "-r",
+            "requirements.txt"
+          ],
+          "display": "<WORKDIR>/baseline/venv/bin/python -m pip install -r requirements.txt",
+          "cwd": ".",
+          "started_at": "2026-10-15T08:21:10+00:00",
+          "timeout_seconds": 600,
+          "shell": false,
+          "status": "passed",
+          "exit_code": 0,
+          "passed": true,
+          "timed_out": false,
+          "stdout": "Collecting Jinja2==2.11.3 (from -r requirements.txt (line 1))\n  Using cached Jinja2-2.11.3-py2.py3-none-any.whl.metadata (3.5 kB)\nCollecting MarkupSafe==3.0.4 (from -r requirements.txt (line 2))\n  Using cached markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)\nUsing cached Jinja2-2.11.3-py2.py3-none-any.whl (125 kB)\nUsing cached markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)\nInstalling collected packages: MarkupSafe, Jinja2\nSuccessfully installed Jinja2-2.11.3 MarkupSafe-3.0.4\n",
+          "stderr": "",
+          "output_truncated": false,
+          "duration_seconds": 0.833,
+          "test_summary": null
+        }
+      ]
+    },
+    "after": {
+      "passed": true,
+      "all_commands_attempted": true,
+      "exit_code": 0,
+      "command": [
+        "<WORKDIR>/after/venv/bin/python",
+        "check_import.py"
+      ],
+      "test_summary": null,
+      "commands": [
+        {
+          "command": [
+            "<WORKDIR>/after/venv/bin/python",
+            "-m",
+            "pip",
+            "check"
+          ],
+          "display": "<WORKDIR>/after/venv/bin/python -m pip check",
+          "cwd": ".",
+          "started_at": "2026-10-15T08:21:17+00:00",
+          "timeout_seconds": 600,
+          "shell": false,
+          "status": "passed",
+          "exit_code": 0,
+          "passed": true,
+          "timed_out": false,
+          "stdout": "No broken requirements found.\n",
+          "stderr": "",
+          "output_truncated": false,
+          "duration_seconds": 0.344,
+          "test_summary": null
+        },
+        {
+          "command": [
+            "<WORKDIR>/after/venv/bin/python",
+            "check_import.py"
+          ],
+          "display": "<WORKDIR>/after/venv/bin/python check_import.py",
+          "cwd": ".",
+          "started_at": "2026-10-15T08:21:17+00:00",
+          "timeout_seconds": 600,
+          "shell": false,
+          "status": "passed",
+          "exit_code": 0,
+          "passed": true,
+          "timed_out": false,
+          "stdout": "render ok: Hello &lt;world&gt;\n",
+          "stderr": "",
+          "output_truncated": false,
+          "duration_seconds": 0.083,
+          "test_summary": null
+        }
+      ],
+      "setup": [
+        {
+          "command": [
+            "<WORKDIR>/after/venv/bin/python",
+            "-m",
+            "pip",
+            "install",
+            "-r",
+            "requirements.txt"
+          ],
+          "display": "<WORKDIR>/after/venv/bin/python -m pip install -r requirements.txt",
+          "cwd": ".",
+          "started_at": "2026-10-15T08:21:15+00:00",
+          "timeout_seconds": 600,
+          "shell": false,
+          "status": "passed",
+          "exit_code": 0,
+          "passed": true,
+          "timed_out": false,
+          "stdout": "Collecting Jinja2==2.11.3 (from -r requirements.txt (line 1))\n  Using cached Jinja2-2.11.3-py2.py3-none-any.whl.metadata (3.5 kB)\nCollecting MarkupSafe==3.0.4 (from -r requirements.txt (line 2))\n  Using cached markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)\nUsing cached Jinja2-2.11.3-py2.py3-none-any.whl (125 kB)\nUsing cached markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)\nInstalling collected packages: MarkupSafe, Jinja2\nSuccessfully installed Jinja2-2.11.3 MarkupSafe-3.0.4\n",
+          "stderr": "",
+          "output_truncated": false,
+          "duration_seconds": 0.836,
+          "test_summary": null
+        },
+        {
+          "command": [
+            "<WORKDIR>/after/venv/bin/python",
+            "-m",
+            "pip",
+            "install",
+            "MarkupSafe==2.0.1"
+          ],
+          "display": "<WORKDIR>/after/venv/bin/python -m pip install MarkupSafe==2.0.1",
+          "cwd": ".",
+          "started_at": "2026-10-15T08:21:16+00:00",
+          "timeout_seconds": 600,
+          "shell": false,
+          "status": "passed",
+          "exit_code": 0,
+          "passed": true,
+          "timed_out": false,
+          "stdout": "Collecting MarkupSafe==2.0.1\n  Using cached markupsafe-2.0.1-cp312-cp312-linux_x86_64.whl\nInstalling collected packages: MarkupSafe\n  Attempting uninstall: MarkupSafe\n    Found existing installation: MarkupSafe 3.0.4\n    Uninstalling MarkupSafe-3.0.4:\n      Successfully uninstalled MarkupSafe-3.0.4\nSuccessfully installed MarkupSafe-2.0.1\n",
+          "stderr": "",
+          "output_truncated": false,
+          "duration_seconds": 0.61,
+          "test_summary": null
+        }
+      ],
+      "file_edits": []
+    },
+    "before": {
+      "passed": false,
+      "all_commands_attempted": true,
+      "exit_code": 1,
+      "command": [
+        "<WORKDIR>/baseline/venv/bin/python",
+        "check_import.py"
+      ],
+      "test_summary": null,
+      "commands": [
+        {
+          "command": [
+            "<WORKDIR>/baseline/venv/bin/python",
+            "-m",
+            "pip",
+            "check"
+          ],
+          "display": "<WORKDIR>/baseline/venv/bin/python -m pip check",
+          "cwd": ".",
+          "started_at": "2026-10-15T08:21:11+00:00",
+          "timeout_seconds": 600,
+          "shell": false,
+          "status": "passed",
+          "exit_code": 0,
+          "passed": true,
+          "timed_out": false,
+          "stdout": "No broken requirements found.\n",
+          "stderr": "",
+          "output_truncated": false,
+          "duration_seconds": 0.427,
+          "test_summary": null
+        },
+        {
+          "command": [
+            "<WORKDIR>/baseline/venv/bin/python",
+            "check_import.py"
+          ],
+          "display": "<WORKDIR>/baseline/venv/bin/python check_import.py",
+          "cwd": ".",
+          "started_at": "2026-10-15T08:21:12+00:00",
+          "timeout_seconds": 600,
+          "shell": false,
+          "status": "failed",
+          "exit_code": 1,
+          "passed": false,
+          "timed_out": false,
+          "stdout": "",
+          "stderr": "Traceback (most recent call last):\n  File \"<WORKDIR>/baseline/project/check_import.py\", line 3, in <module>\n    from app import render\n  File \"<WORKDIR>/baseline/project/app.py\", line 5, in <module>\n    from jinja2 import Template\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/__init__.py\", line 12, in <module>\n    from .environment import Environment\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/environment.py\", line 25, in <module>\n    from .defaults import BLOCK_END_STRING\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/defaults.py\", line 3, in <module>\n    from .filters import FILTERS as DEFAULT_FILTERS  # noqa: F401\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<WORKDIR>/baseline/venv/lib/python3.12/site-packages/jinja2/filters.py\", line 13, in <module>\n    from markupsafe import soft_unicode\nImportError: cannot import name 'soft_unicode' from 'markupsafe' (<WORKDIR>/baseline/venv/lib/python3.12/site-packages/markupsafe/__init__.py)\n",
+          "output_truncated": false,
+          "duration_seconds": 0.066,
+          "test_summary": null
+        }
+      ],
+      "setup": [
+        {
+          "command": [
+            "<WORKDIR>/baseline/venv/bin/python",
+            "-m",
+            "pip",
+            "install",
+            "-r",
+            "requirements.txt"
+          ],
+          "display": "<WORKDIR>/baseline/venv/bin/python -m pip install -r requirements.txt",
+          "cwd": ".",
+          "started_at": "2026-10-15T08:21:10+00:00",
+          "timeout_seconds": 600,
+          "shell": false,
+          "status": "passed",
+          "exit_code": 0,
+          "passed": true,
+          "timed_out": false,
+          "stdout": "Collecting Jinja2==2.11.3 (from -r requirements.txt (line 1))\n  Using cached Jinja2-2.11.3-py2.py3-none-any.whl.metadata (3.5 kB)\nCollecting MarkupSafe==3.0.4 (from -r requirements.txt (line 2))\n  Using cached markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)\nUsing cached Jinja2-2.11.3-py2.py3-none-any.whl (125 kB)\nUsing cached markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)\nInstalling collected packages: MarkupSafe, Jinja2\nSuccessfully installed Jinja2-2.11.3 MarkupSafe-3.0.4\n",
+          "stderr": "",
+          "output_truncated": false,
+          "duration_seconds": 0.833,
+          "test_summary": null
+        }
+      ]
+    },
+    "test_summary": "Status VERIFIED_CHANGE. baseline: failed after: passed Baseline captured; declared dependency change applied with evidence; every baseline command was repeated after the change and passed.",
+    "trust_boundary": "Configured commands may execute arbitrary project code. They ran only because a verification configuration was supplied.",
+    "limitations": [
+      "Verification applies only to the exact commands, project copy and environment recorded here.",
+      "A passing command is not a dependency change; a dependency change is not a verified fix; VERIFIED_CHANGE means the declared change was applied with evidence and the recorded commands passed afterwards.",
+      "A passing verification does not establish that the change is the best long-term choice, and no security advisory data is consulted.",
+      "Network access was not restricted during setup commands."
+    ]
+  },
+  "verification_assessment": {
+    "status": "VERIFIED_CHANGE",
+    "verified": true,
+    "label": "VERIFIED",
+    "reasons": [
+      "Baseline captured; declared dependency change applied with evidence; every baseline command was repeated after the change and passed."
+    ]
+  },
+  "verification_status": "VERIFIED_CHANGE",
+  "overall_status": "VERIFIED_CHANGE",
+  "interpretation": "A declared dependency change was applied with evidence and the recorded after-change commands passed in the recorded environment.",
+  "artifact_states": [
+    {
+      "artifact": "scan",
+      "state": "available"
+    },
+    {
+      "artifact": "usage",
+      "state": "available"
+    },
+    {
+      "artifact": "ai_analysis",
+      "state": "not_provided"
+    },
+    {
+      "artifact": "verification",
+      "state": "available"
+    }
+  ],
+  "missing_artifact_notices": [
+    "ai_analysis artifact: not_provided. Nothing was substituted for it."
+  ],
+  "rollback": [],
+  "rollback_note": "No rollback information was supplied by a real analysis artifact.",
+  "limitations": [
+    "This capsule records available evidence only; it does not assess security advisories.",
+    "Missing or unreadable artifacts remain missing and are not replaced with synthetic results.",
+    "Scanner findings are manifest observations, not proof of runtime failure.",
+    "A package with no detected import is a review lead, not proof it is unused.",
+    "A migration recommendation is a proposal until the verification runner records a VERIFIED_CHANGE.",
+    "Human review is required before applying dependency changes."
+  ]
+}
