@@ -1,0 +1,101 @@
+{
+  "schema_version": "2.0",
+  "report_type": "scan",
+  "timestamp_policy": "No wall-clock timestamp is embedded so repeated scans of unchanged source are byte-identical.",
+  "root": "project",
+  "root_policy": "Only the directory name is recorded; all paths in this report are relative to the scan root.",
+  "scan_status": "completed",
+  "summary": {
+    "manifest_count": 1,
+    "declaration_count": 2,
+    "finding_count": 0,
+    "error_count": 0,
+    "note_count": 0
+  },
+  "manifests_scanned": [
+    "requirements.txt"
+  ],
+  "manifests": [
+    {
+      "file": "requirements.txt",
+      "format": "requirements",
+      "declaration_count": 2,
+      "included_by": []
+    }
+  ],
+  "declaration_count": 2,
+  "declarations": [
+    {
+      "name": "Jinja2",
+      "normalized_name": "jinja2",
+      "extras": [],
+      "specifier": "==2.11.3",
+      "original_specifier": "==2.11.3",
+      "constraint": "==2.11.3",
+      "marker": null,
+      "url": null,
+      "kind": "requirement",
+      "file": "requirements.txt",
+      "line": 1,
+      "section": "requirements",
+      "excerpt": "Jinja2==2.11.3"
+    },
+    {
+      "name": "MarkupSafe",
+      "normalized_name": "markupsafe",
+      "extras": [],
+      "specifier": "==3.0.4",
+      "original_specifier": "==3.0.4",
+      "constraint": "==3.0.4",
+      "marker": null,
+      "url": null,
+      "kind": "requirement",
+      "file": "requirements.txt",
+      "line": 2,
+      "section": "requirements",
+      "excerpt": "MarkupSafe==3.0.4"
+    }
+  ],
+  "directives": [],
+  "findings": [],
+  "errors": [],
+  "exclusions": {
+    "directory_names": [
+      ".eggs",
+      ".git",
+      ".hg",
+      ".idea",
+      ".mypy_cache",
+      ".nox",
+      ".pytest_cache",
+      ".ruff_cache",
+      ".svn",
+      ".tox",
+      ".venv",
+      ".vscode",
+      "__pycache__",
+      "build",
+      "dist",
+      "node_modules",
+      "patchproof-output",
+      "patchproof_output",
+      "site-packages",
+      "venv"
+    ],
+    "directory_patterns": [
+      "*.egg-info",
+      "*.dist-info",
+      "directories containing pyvenv.cfg"
+    ],
+    "user_exclusions": [],
+    "excluded_directories_encountered": []
+  },
+  "limitations": [
+    "Only requirements*.txt, pyproject.toml, setup.cfg and setup.py (literal values) are parsed; Pipfile, poetry/pdm tables, conda files and lockfiles are not.",
+    "setup.py is analyzed statically and never executed; computed dependency lists are not evaluated.",
+    "Constraint files (-c) and remote includes are noted but not compared.",
+    "Compatibility of two specifiers is judged against a bounded set of candidate versions; when the result cannot be proven the finding is reported as uncertain.",
+    "Different or incompatible constraints are observations, not proof of runtime failure, and no security advisory data is consulted.",
+    "No manifests found means the repository was not assessed, not that it is clean."
+  ]
+}
