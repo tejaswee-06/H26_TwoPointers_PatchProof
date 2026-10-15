@@ -8,6 +8,7 @@ REQUIRED_KEYS = {
     "runtime",
     "finding_ids",
     "analysis",
+    "diagnostic_hypotheses",
     "options",
     "recommended_option",
     "uncertainties",
@@ -39,14 +40,59 @@ def validate_advice(data: dict, expected_finding_ids: list[str]) -> dict:
     if data["runtime"] != "ollama-local":
         raise ValueError("Unexpected runtime")
 
+    hypotheses = data["diagnostic_hypotheses"]
+    if not isinstance(hypotheses, list) or not hypotheses:
+        raise ValueError("At least one diagnostic hypothesis is required")
+
+    hypothesis_keys = {
+        "hypothesis",
+        "supporting_evidence",
+        "contradicting_evidence",
+        "confidence",
+        "discriminating_tests",
+    }
+    for hypothesis in hypotheses:
+        if not isinstance(hypothesis, dict):
+            raise ValueError("Each diagnostic hypothesis must be an object")
+        missing_hypothesis = hypothesis_keys - hypothesis.keys()
+        if missing_hypothesis:
+            raise ValueError(
+                f"Diagnostic hypothesis missing: {sorted(missing_hypothesis)}"
+            )
+        if (
+            not isinstance(hypothesis["hypothesis"], str)
+            or not hypothesis["hypothesis"].strip()
+        ):
+            raise ValueError("hypothesis must be a non-empty string")
+        if hypothesis["confidence"] not in {"low", "medium", "high"}:
+            raise ValueError("hypothesis confidence must be low, medium, or high")
+        for key in (
+            "supporting_evidence",
+            "contradicting_evidence",
+            "discriminating_tests",
+        ):
+            value = hypothesis[key]
+            if not isinstance(value, list) or any(
+                not isinstance(item, str) or not item.strip()
+                for item in value
+            ):
+                raise ValueError(
+                    f"{key} must be a list of non-empty strings"
+                )
+
     if not isinstance(data["finding_ids"], list):
         raise ValueError("finding_ids must be a list")
+    if not data["finding_ids"]:
+        raise ValueError("finding_ids must contain at least one finding ID")
 
     if not all(
         isinstance(item, str) and item.strip()
         for item in data["finding_ids"]
     ):
         raise ValueError("finding_ids must contain non-empty strings")
+
+    if len(data["finding_ids"]) != len(set(data["finding_ids"])):
+        raise ValueError("finding_ids must not contain duplicates")
 
     if not set(data["finding_ids"]).issubset(set(expected_finding_ids)):
         raise ValueError("AI referenced an unknown finding ID")
