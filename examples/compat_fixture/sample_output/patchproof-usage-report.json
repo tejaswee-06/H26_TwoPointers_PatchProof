@@ -1,0 +1,94 @@
+{
+  "schema_version": "2.0",
+  "report_type": "usage",
+  "root": "project",
+  "scan_status": "completed",
+  "python_files_scanned": 2,
+  "python_files_with_imports": 2,
+  "summary": {
+    "declared_packages": 2,
+    "by_status": {
+      "import_observed": 1,
+      "no_static_import_found": 1
+    },
+    "parse_error_count": 0,
+    "analysis_complete": true
+  },
+  "packages": [
+    {
+      "package": "jinja2",
+      "declarations": [
+        {
+          "file": "requirements.txt",
+          "line": 1,
+          "constraint": "==2.11.3",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "jinja2"
+      ],
+      "mapping_source": "installed_metadata",
+      "imports_found": [
+        {
+          "file": "app.py",
+          "line": 5,
+          "module": "jinja2",
+          "import_name": "jinja2",
+          "alias": null,
+          "kind": "from_import",
+          "statement": "from jinja2 import Template"
+        }
+      ],
+      "usage_status": "import_observed",
+      "interpretation": "Import(s) matching the candidate import root(s) were observed in source."
+    },
+    {
+      "package": "markupsafe",
+      "declarations": [
+        {
+          "file": "requirements.txt",
+          "line": 2,
+          "constraint": "==3.0.4",
+          "section": "requirements"
+        }
+      ],
+      "candidate_import_roots": [
+        "markupsafe"
+      ],
+      "mapping_source": "installed_metadata",
+      "imports_found": [],
+      "usage_status": "no_static_import_found",
+      "interpretation": "No static import was found. This is a review lead only, not proof the package is unused: dynamic imports, plugins, entry points, CLI use or optional features may still use the package.",
+      "review_lead_id": "U-9DDB9D1BF9"
+    }
+  ],
+  "review_leads": [
+    {
+      "id": "U-9DDB9D1BF9",
+      "type": "usage_review",
+      "severity": "info",
+      "package": "markupsafe",
+      "usage_status": "no_static_import_found",
+      "status": "observed",
+      "title": "No confirmed static import for markupsafe",
+      "summary": "No static import was found. This is a review lead only, not proof the package is unused: dynamic imports, plugins, entry points, CLI use or optional features may still use the package."
+    }
+  ],
+  "parse_errors": [],
+  "unresolved_dynamic_imports": {},
+  "mapping": {
+    "source": "installed_metadata_of_active_python",
+    "entries": 145
+  },
+  "exclusions": {
+    "excluded_directories_encountered": []
+  },
+  "limitations": [
+    "Import-to-distribution mappings come from metadata installed in the Python environment running this tool; uninstalled distributions fall back to a name-based guess and are labelled mapping_unavailable when unmatched.",
+    "Dynamic imports with non-literal targets, plugin loading, entry points, runtime loading, CLI-only use, data-only packages and optional features cannot be detected statically.",
+    "Literal importlib.import_module('x') / __import__('x') calls are recorded as kind=dynamic_literal.",
+    "A missing import must never be treated as proof that a package is unused; do not remove packages on this basis.",
+    "Import roots are matched at top level only; namespace packages shared by several distributions may over-match."
+  ]
+}
